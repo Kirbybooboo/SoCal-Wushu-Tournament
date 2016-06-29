@@ -6,7 +6,6 @@ $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to 
 mysqli_select_db($link,"wushuclub");
 
 if(isset($_REQUEST['submit'])) {
-    $errorMessage = "";
     $email=$_POST['email'];
     $firstName=$_POST['firstName'];
     $lastName=$_POST['lastName'];
@@ -33,15 +32,60 @@ if(isset($_REQUEST['submit'])) {
     $taijiStraightsword=$_POST['taijiStraightsword'];
      
     // Validation will be added here
-    
-    if ($errorMessage != "" ) {
-        echo "<p class='message'>" .$errorMessage. "</p>" ;
+    $err = 0;
+
+    if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $errEmail = 'Please enter a valid email address';
+        $err = 1;
     }
-    else {
+
+    if (!$_POST['firstName']) {
+        $errFirstName = "Please enter your first name";
+        $err = 1;
+    }
+
+    if (!$_POST['lastName']) {
+        $errLastName = "Please enter your last name";
+        $err = 1;
+    }
+
+    if (!$_POST['gender']) {
+        $errGender = "Please select your gender";
+        $err = 1;
+    }
+
+    if ($_POST['year'] == '0000' || $_POST['month'] == '00' || $_POST['day'] == '00')
+        $errDate = "Please select your birth date";
+        $err = 1;   
+
+    if (!$_POST['level']) {
+        $errLevel = "Please select a level";
+        $err = 1;
+    }
+    
+    if (!$err) {
         //Inserting record in table using INSERT query
         $insqDbtb="INSERT INTO `wushuclub`.`competitors`
         (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthern`,`tSouthern`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `Fist24`, `taijiStraightsword`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSoutherStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthern', '$tSouthern', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$Fist24', '$taijiStraightsword')";
         mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
+
+        //create Modal for confirmation of submit
+        echo '<div id="confirm" class="modal fade" role="dialog">';
+        echo 'div class="modal-dialog">';
+        echo '<div class="modal-content">';
+        echo '<div class="modal-header">';
+        echo '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        echo '<h4 class="modal-title">Confirmation</h4>';
+        echo '</div>';
+        echo '<div class="modal-body">';
+        echo '<p>You are registered!</p>';
+        echo '</div>';
+        echo '<div class="modal-footer">';
+        echo '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
     }
 }
 ?>
@@ -159,15 +203,17 @@ if(isset($_REQUEST['submit'])) {
               <label class="control-label" for="email">E-mail</label>
               <div class="controls">
                 <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
-                <p class="help-block">Please provide your E-mail</p>
+                <?php echo "<p class='text-danger'>$errEmail</p>";?>
               </div>
             </div>
+
 
             <div class="control-group">
               <!-- First Name -->
               <label class="control-label" for="firstName">First Name</label>
               <div class="controls">
                 <input type="text" id="firstName" name="firstName" placeholder="" class="input-xlarge">
+                <?php echo "<p class='text-danger'>$errFirstName</p>";?>
               </div>
             </div>
 
@@ -176,6 +222,7 @@ if(isset($_REQUEST['submit'])) {
               <label class="control-label" for="lastName">Last Name</label>
               <div class="controls">
                 <input type="text" id="lastName" name="lastName" placeholder="" class="input-xlarge">
+                <?php echo "<p class='text-danger'>$errLastName</p>";?>
               </div>
             </div>
 
@@ -187,6 +234,8 @@ if(isset($_REQUEST['submit'])) {
                 Male
                 <input type="radio" id="female" name="gender" value="female">
                 Female
+                <br>
+                <?php echo "<p class='text-danger'>$errGender</p>";?>
               </div>
             </div>
 
@@ -195,6 +244,7 @@ if(isset($_REQUEST['submit'])) {
               <label class="control-label" for="birthDate">Birth Date</label>
               <div class="controls">
                 <select name="month">
+                    <option selected="selected" value="00">--</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -209,6 +259,7 @@ if(isset($_REQUEST['submit'])) {
                     <option value="12">December</option>
                 </select>
                 <select name="day">
+                    <option selected="selected" value="00">--</option>
                     <option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option>
                     <option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option>
                     <option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
@@ -219,6 +270,7 @@ if(isset($_REQUEST['submit'])) {
                     <option value="29">29</option><option value="30">30</option><option value="31">31</option>
                 </select>
                 <select name="year">
+                    <option selected="selected" value="0000">----</option>
                     <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option>
                     <option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
                     <option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
@@ -250,7 +302,7 @@ if(isset($_REQUEST['submit'])) {
                     <option value="1905">1905</option><option value="1904">1904</option><option value="1903">1903</option><option value="1902">1902</option>
                     <option value="1901">1901</option><option value="1900">1900</option>
                 </select>
-                <p class="help-block">Please provide your Birth Date in Month, Day, Year</p>
+                <?php echo "<p class='text-danger'>$errDate</p>";?>
               </div>
             </div>
 
@@ -267,6 +319,7 @@ if(isset($_REQUEST['submit'])) {
                 <input type="radio" id="advance" name="level" value="advance">
                 Advance (5+ years of practice)
                 <br>
+                <?php echo "<p class='text-danger'>$errLevel</p>";?>
               </div>
             </div>
             <br>
@@ -354,7 +407,7 @@ if(isset($_REQUEST['submit'])) {
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
-                <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg">Submit</button>
+                <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#confirm">Submit</button>
               </div>
               <br>
             </div>
