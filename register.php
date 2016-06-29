@@ -54,9 +54,10 @@ if(isset($_REQUEST['submit'])) {
         $err = 1;
     }
 
-    if ($_POST['year'] == '0000' || $_POST['month'] == '00' || $_POST['day'] == '00')
+    if ($_POST['year'] == '0000' || $_POST['month'] == '00' || $_POST['day'] == '00') {
         $errDate = "Please select your birth date";
         $err = 1;   
+    }
 
     if (!$_POST['level']) {
         $errLevel = "Please select a level";
