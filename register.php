@@ -130,7 +130,13 @@ if(isset($_REQUEST['submit'])) {
                         <a href="index.html#news">News</a>
                     </li>
                     <li>
+                        <a href="about.php">About</a>
+                    </li>
+                    <li>
                         <a href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a href="http://www.campusrec.uci.edu/club/">Campus Rec</a>
                     </li>
                 </ul>
             </div>

@@ -81,15 +81,6 @@
                     <div class="intro-message">
                         <h1>SoCal Wushu Tournament</h1>
                         <h3>1st Annual Tournament - January 28, 2017</h3>
-                        <hr class="intro-divider">
-                        <ul class="list-inline intro-social-buttons">
-                            <li>
-                                <a href="register.php#register" class="btn btn-default btn-lg"><span class="network-name">Register</span></a>
-                            </li>
-                            <li>
-                                <a href="volunteer.php#register" class="btn btn-default btn-lg"><span class="network-name">Volunteer</span></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -102,50 +93,7 @@
 
     <!-- Page Content -->
 
-	<a  name="news"></a>
-    <div class="content-section-a">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Registration is Open!</h2>
-                    <p class="lead">If you are a competitor, click <a href="register.php#register">here</a> to register</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/register.jpg" alt="">
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.content-section-a -->
-
-    <div class="content-section-b">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Volunteers<br>Sign Up</h2>
-                    <p class="lead">We are in need of volunteers to set up, clean, time, and other various stuff. Please sign up <a href="volunteer.php#register">here</a>.</p>
-                </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="img/volunteer.jpg" alt="">
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.content-section-b -->
-
+	<a name="about"></a>
     <div class="content-section-a">
 
         <div class="container">
@@ -154,11 +102,11 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Website is up!</h2>
-                    <p class="lead">This is the first of the annual SoCal Wushu Tournament hosted by the Wushu Club at UCI. </p>
+                    <h2 class="section-heading">Venue</h2>
+                    <p class="lead">The SoCal Wushu Tournament will be held at the Anteater Recreation Center near the UCI campus.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/abouttournament.jpg" alt="">
+                    <img class="img-responsive" src="img/uciarc.jpg" alt="">
                 </div>
             </div>
 
@@ -166,7 +114,52 @@
         <!-- /.container -->
 
     </div>
-    <!-- /.content-section-a -->
+
+        <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Admission</h2>
+                    <p class="lead">Spectators can enter for free! (Better than anywhere else!)</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <!-- <img class="img-responsive" src="img/abouttournament.jpg" alt=""> -->
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Parking</h2>
+                    <p class="lead">UCI Students, ARC Members, and visitors can park in the ARC parking lot or in the East Campus Parking Structure. To park in both the ARC Parking lot and the East Campus Parking structure you must purchase a parking day pass if you do not have a UCI parking permit. Hourly permits purchased from the ticket dispenser in the ARC parking lot are valid in the ARC Parking lot and white spaces in the East Campus Parking structure.
+
+Those with a UCI permit may park in all unmarked spaces in the parking structure. Parking Prices (ARC Lot dispenser): 1 hour = $2, Daily = $10. If any cars are parked in illegal locations, they will be ticketed and towed so please abide by all University policies.
+
+Vehicle owners are responsible for all parking fines.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:480px;width:600px;'><div id='gmap_canvas' style='height:480px;width:600px;'></div><div><small><a href=""></a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(33.6451628,-117.82819819999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.6451628,-117.82819819999997)});infowindow = new google.maps.InfoWindow({content:'<strong>Anteater Recreation Center</strong><br>670 California Ave, Irvine, CA 92617<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
 
 	<a  name="contact"></a>
     <div class="banner">

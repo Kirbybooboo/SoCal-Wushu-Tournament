@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-lg-5 col-sm-6">
                 <h2 class="section-heading">Thank you for registering!</h2>
-                <p class="lead">You will be redirected shortly...</p>
+                <p class="lead">You will be redirected shortly... or click <a href="index.html">here</a> </p>
             </div>
         </div>
     </div>
