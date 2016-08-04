@@ -22,8 +22,8 @@ if(isset($_REQUEST['submit'])) {
     $cSouthernStaff=$_POST['cSouthernStaff'];
     $cOtherBarehand=$_POST['cOtherBarehand'];
     $cOtherWeapon=$_POST['cOtherWeapon'];
-    $tNorthern=$_POST['tNorthern'];
-    $tSouthern=$_POST['tSouthern'];
+    $tNorthernFist=$_POST['tNorthernFist'];
+    $tSouthernFist=$_POST['tSouthernFist'];
     $tShortWeapon=$_POST['tShortWeapon'];
     $tLongWeapon=$_POST['tLongWeapon'];
     $tOtherBarehand=$_POST['tOtherBarehand'];
@@ -67,26 +67,11 @@ if(isset($_REQUEST['submit'])) {
     if (!$err) {
         //Inserting record in table using INSERT query
         $insqDbtb="INSERT INTO `wushuclub`.`competitors`
-        (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthern`,`tSouthern`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `Fist24`, `taijiStraightsword`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSoutherStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthern', '$tSouthern', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$Fist24', '$taijiStraightsword')";
+        (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthern`,`tSouthern`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `Fist24`, `taijiStraightsword`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSoutherStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthernFist', '$tSouthernFist', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$Fist24', '$taijiStraightsword')";
         mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
 
-        //create Modal for confirmation of submit
-        echo '<div id="confirm" class="modal fade" role="dialog">';
-        echo 'div class="modal-dialog">';
-        echo '<div class="modal-content">';
-        echo '<div class="modal-header">';
-        echo '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-        echo '<h4 class="modal-title">Confirmation</h4>';
-        echo '</div>';
-        echo '<div class="modal-body">';
-        echo '<p>You are registered!</p>';
-        echo '</div>';
-        echo '<div class="modal-footer">';
-        echo '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+        //go to redirect after successful registration
+        header('Location: redirect.php');
     }
 }
 ?>
@@ -325,7 +310,7 @@ if(isset($_REQUEST['submit'])) {
             </div>
             <br>
 
-            <h3>Events</h3>
+            <h3>Events ($50 for 1st event,  $10 for each additional event)</h3>
             <br>
             <h4>Contemporary</h4>
             <div class="control-group">
@@ -369,11 +354,11 @@ if(isset($_REQUEST['submit'])) {
             <div class="control-group">
             <!--Traditional Events-->
                 <div class="controls">
-                    <input type="checkbox" name="tNorthern" value="1">
-                    Northern
+                    <input type="checkbox" name="tNorthernFist" value="1">
+                    Northern Fist
                     <br>
-                    <input type="checkbox" name="tSouthern" value="1">
-                    Southern
+                    <input type="checkbox" name="tSouthernFist" value="1">
+                    Southern Fist
                     <br>
                     <input type="checkbox" name="tShortWeapon" value="1">
                     Short Weapon
@@ -408,7 +393,7 @@ if(isset($_REQUEST['submit'])) {
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
-                <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#confirm">Submit</button>
+                <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg">Submit</button>
               </div>
               <br>
             </div>
