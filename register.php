@@ -28,10 +28,11 @@ if(isset($_REQUEST['submit'])) {
     $tLongWeapon=$_POST['tLongWeapon'];
     $tOtherBarehand=$_POST['tOtherBarehand'];
     $tOtherWeapon=$_POST['tOtherWeapon'];
-    $Fist24=$_POST['Fist24'];
-    $taijiStraightsword=$_POST['taijiStraightsword'];
+    $chen=$_POST['chen'];
+    $yang=$_POST['yang'];
+    $taijiWeapon=$_POST['taijiWeapon'];
      
-    // Validation will be added here
+    // Validation
     $err = 0;
 
     if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -67,8 +68,102 @@ if(isset($_REQUEST['submit'])) {
     if (!$err) {
         //Inserting record in table using INSERT query
         $insqDbtb="INSERT INTO `wushuclub`.`competitors`
-        (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthern`,`tSouthern`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `Fist24`, `taijiStraightsword`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSoutherStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthernFist', '$tSouthernFist', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$Fist24', '$taijiStraightsword')";
+        (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthernFist`,`tSouthernFist`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `chen`, `yang`, `taijiWeapon`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSouthernStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthernFist', '$tSouthernFist', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$chen','$yang', '$taijiWeapon')";
         mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
+
+        $count = 0;
+        $subject = 'SoCal Wushu Tournament Registration Confirmation';
+        $msg = "Thank you for registering for the SoCal Wushu Tournament. Below you will find your registration information. If you have any concerns or changes you want to make, please contact wushuclubuci@gmail.com.\n\n".
+        "Competitor's name: ".$firstName." ".$lastName."\n".
+        "Competitor's Gender: ".ucfirst($gender)."\n".
+        "Birth Date: ".$birthDate."\n".
+        "Level: ".ucfirst($level)."\n".
+        "Events:\n";
+        if ($cLongFist=="1") {
+            $msg.= "Contemporary Long Fist\n";
+            $count += 1;
+        }
+        if ($cSouthernFist=="1") {
+            $msg.= "Contemporary Southern Fist\n";
+            $count += 1;
+        }
+        if ($cBroadsword=="1") {
+            $msg.= "Contemporary Broadsword\n";
+            $count += 1;
+        }
+        if ($cStraightsword=="1") {
+            $msg.= "Contemporary Straightsword\n";
+            $count += 1;
+        }
+        if ($cSouthernBroadsword=="1") {
+            $msg.= "Contemporary Southern Broadsword\n";
+            $count += 1;
+        }
+        if ($cStaff=="1") {
+            $msg.= "Contemporary Staff\n";
+            $count += 1;
+        }
+        if ($cSpear=="1") {
+            $msg.= "Contemporary Spear\n";
+            $count += 1;
+        }
+        if ($cSouthernStaff=="1") {
+            $msg.= "Contemporary Southern Staff\n";
+            $count += 1;
+        }
+        if ($cOtherBarehand=="1") {
+            $msg.= "Contemporary Other Barehand\n";
+            $count += 1;
+        }
+        if ($cOtherWeapon=="1") {
+            $msg.= "Contemporary Other Weapon\n";
+            $count += 1;
+        }
+        if ($tNorthernFist=="1") {
+            $msg.= "Traditional Northern Fist\n";
+            $count += 1;
+        }
+        if ($tSouthernFist=="1") {
+            $msg.= "Traditional Southern Fist\n";
+            $count += 1;
+        }
+        if ($tShortWeapon=="1") {
+            $msg.= "Traditional Short Weapon\n";
+            $count += 1;
+        }
+        if ($tLongWeapon=="1") {
+            $msg.= "Traditional Long Weapon\n";
+            $count += 1;
+        }
+        if ($tOtherBarehand=="1") {
+            $msg.= "Traditional Other Barehand\n";
+            $count += 1;
+        }
+        if ($tOtherWeapon=="1") {
+            $msg.= "Traditional Other Weapon\n";
+            $count += 1;
+        }
+        if ($chen=="1") {
+            $msg.= "Chen Style\n";
+            $count += 1;
+        }
+        if ($yang=="1") {
+            $msg.= "Yang Style\n";
+            $count += 1;
+        }
+        if ($taijiWeapon=="1") {
+            $msg.= "Taiji Weapon\n";
+            $count += 1;
+        }
+        $price = 50 + ($count-1)*10;
+        $msg.= "\nPrice: $".$price;
+
+        $headers = 'From: wushuclubuci@gmail.com'."\r\n".
+        'Reply-To: wushuclubuci@gmail.com'."\r\n".
+        'X-Mailer: PHP/'.phpversion();
+
+        mail($email, $subject, $msg, $headers);
+
 
         //go to redirect after successful registration
         header('Location: redirect.php');
@@ -130,8 +225,10 @@ if(isset($_REQUEST['submit'])) {
                         <a href="index.html#news">News</a>
                     </li>
                     <li>
-                        <a href="about.php">About</a>
+                        <a href="about.php#about">About</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#contact">Contact</a>
                     </li>
@@ -386,11 +483,14 @@ if(isset($_REQUEST['submit'])) {
             <div class="control-group">
             <!--Internal Events-->
                 <div class="controls">
-                    <input type="checkbox" name="Fist24" value="1">
-                    24 Taiji
+                    <input type="checkbox" name="chen" value="1">
+                    Chen Style
                     <br>
-                    <input type="checkbox" name="taijiStraightsword" value="1">
-                    Taiji Straightsword
+                    <input type="checkbox" name="yang" value="1">
+                    Yang Style
+                    <br>
+                    <input type="checkbox" name="taijiWeapon" value="1">
+                    Taiji Weapon
                     <br>
                 </div>
             </div>

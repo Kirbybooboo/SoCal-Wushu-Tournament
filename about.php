@@ -52,11 +52,13 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="#news">News</a>
+                        <a href="index.html#news">News</a>
                     </li>
                     <li>
-                        <a href="about.php">About</a>
+                        <a href="about.php#about">About</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#contact">Contact</a>
                     </li>
@@ -72,7 +74,6 @@
 
 
     <!-- Header -->
-    <a name="about"></a>
     <div class="intro-header">
         <div class="container">
 
@@ -81,6 +82,15 @@
                     <div class="intro-message">
                         <h1>SoCal Wushu Tournament</h1>
                         <h3>1st Annual Tournament - January 28, 2017</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="register.php#register" class="btn btn-default btn-lg"><span class="network-name">Register</span></a>
+                            </li>
+                            <li>
+                                <a href="volunteer.php#register" class="btn btn-default btn-lg"><span class="network-name">Volunteer</span></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -124,7 +134,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Admission</h2>
-                    <p class="lead">Spectators can enter for free! (Better than anywhere else!)</p>
+                    <p class="lead">Spectators can enter for free!</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <!-- <img class="img-responsive" src="img/abouttournament.jpg" alt=""> -->

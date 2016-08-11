@@ -56,13 +56,40 @@ if(isset($_REQUEST['submit']))
         $err = 1;   
     }
     if (!$err) {
-    //Inserting record in table using INSERT query
-    $insqDbtb="INSERT INTO `wushuclub`.`volunteers`
-    (`firstName`, `lastName`, `gender`, `birthDate`, `email`,`6am-8am`,`8am-9am`,`9am-10am`, `10am-11am`, `11am-12pm`, `12pm-1pm`, `1pm-2pm`,`2pm-3pm`,`3pm-4pm`,`4pm-5pm`,`5pm-6pm`,`6pm-7pm`,`7pm-8pm`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$a', '$b', '$c', '$d', '$e', '$f', '$g', '$h', '$i', '$j', '$k', '$l', '$m')";
-    mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
+        //Inserting record in table using INSERT query
+        $insqDbtb="INSERT INTO `wushuclub`.`volunteers`
+        (`firstName`, `lastName`, `gender`, `birthDate`, `email`,`6am-8am`,`8am-9am`,`9am-10am`, `10am-11am`, `11am-12pm`, `12pm-1pm`, `1pm-2pm`,`2pm-3pm`,`3pm-4pm`,`4pm-5pm`,`5pm-6pm`,`6pm-7pm`,`7pm-8pm`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$a', '$b', '$c', '$d', '$e', '$f', '$g', '$h', '$i', '$j', '$k', '$l', '$m')";
+        mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
 
-    //go to redirect after successful registration
-    header('Location: redirect.php');
+
+        $subject = 'SoCal Wushu Tournament Volunteer Confirmation';
+        $msg = "Thank you for volunteering for the SoCal Wushu Tournament. Below you will find your registration information. If you have any concerns or changes you want to make, please contact wushuclubuci@gmail.com.\n\n".
+        "Volunteer's name: ".$firstName." ".$lastName."\n".
+        "Volunteer's Gender: ".$gender."\n".
+        "Birth Date: ".$birthDate."\n".
+        "Times:\n";
+        $msg .= $a=="1" ? "6am-8am\n" : "";
+        $msg .= $b=="1" ? "8am-9am\n" : "";
+        $msg .= $c=="1" ? "9am-10am\n" : "";
+        $msg .= $d=="1" ? "10am-11am\n" : "";
+        $msg .= $e=="1" ? "11am-12pm\n" : "";
+        $msg .= $f=="1" ? "12pm-1pm\n" : "";
+        $msg .= $g=="1" ? "1pm-2pm\n" : "";
+        $msg .= $h=="1" ? "2pm-3pm\n" : "";
+        $msg .= $i=="1" ? "3pm-4pm\n" : "";
+        $msg .= $j=="1" ? "4pm-5pm\n" : "";
+        $msg .= $k=="1" ? "5pm-6pm\n" : "";
+        $msg .= $l=="1" ? "6pm-7pm\n" : "";
+        $msg .= $m=="1" ? "7pm-8pm\n" : "";
+        $headers = 'From: wushuclubuci@gmail.com'."\r\n".
+        'Reply-To: wushuclubuci@gmail.com'."\r\n".
+        'X-Mailer: PHP/'.phpversion();
+
+        mail($email, $subject, $msg, $headers);
+
+
+        //go to redirect after successful registration
+        header('Location: redirect.php');
     }
 }
 ?>
@@ -121,8 +148,10 @@ if(isset($_REQUEST['submit']))
                         <a href="index.html#news">News</a>
                     </li>
                     <li>
-                        <a href="about.php">About</a>
+                        <a href="about.php#about">About</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#contact">Contact</a>
                     </li>
