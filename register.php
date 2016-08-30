@@ -71,6 +71,7 @@ if(isset($_REQUEST['submit'])) {
         (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthernFist`,`tSouthernFist`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `chen`, `yang`, `taijiWeapon`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSouthernStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthernFist', '$tSouthernFist', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$chen','$yang', '$taijiWeapon')";
         mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
 
+        //Creating email
         $count = 0;
         $subject = 'SoCal Wushu Tournament Registration Confirmation';
         $msg = "Thank you for registering for the SoCal Wushu Tournament. Below you will find your registration information. If you have any concerns or changes you want to make, please contact wushuclubuci@gmail.com.\n\n".
@@ -156,12 +157,14 @@ if(isset($_REQUEST['submit'])) {
             $count += 1;
         }
         $price = 50 + ($count-1)*10;
-        $msg.= "\nPrice: $".$price;
+        $msg.= "\nPrice: $".$price."\n";
+        $msg.= "Pay with check on the day of the competition. If not paid, your registration will be void.";
 
         $headers = 'From: wushuclubuci@gmail.com'."\r\n".
         'Reply-To: wushuclubuci@gmail.com'."\r\n".
         'X-Mailer: PHP/'.phpversion();
 
+        //mail confirmation email to user
         mail($email, $subject, $msg, $headers);
 
 
