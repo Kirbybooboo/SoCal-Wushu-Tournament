@@ -5227,6 +5227,10 @@ button.btn-floating {
   background-color: rgba(0, 150, 136, 0.7);
 }
 
+.waves-effect.waves-pink .waves-ripple {
+  background-color: rgba(233,30,99, 0.7);
+}
+
 .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
   border: 0;
   font-style: normal;
@@ -5446,6 +5450,7 @@ button.btn-floating {
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
   padding: 0 23.5px 0 31px;
+  font-weight: 400;
 }
 
 .collapsible.popout {
