@@ -502,7 +502,7 @@ if(isset($_REQUEST['submit'])) {
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
-                <!-- <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg">Submit</button> -->
+                <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg">Submit</button>
               </div>
               <br>
             </div>

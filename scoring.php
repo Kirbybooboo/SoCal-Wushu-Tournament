@@ -29,31 +29,31 @@
                   <a href="longfist.php">Long Fist</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Fist</a>
+                  <a href="longfist.php">Southern Fist</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Broadsword</a>
+                  <a href="longfist.php">Broadsword</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Straightsword</a>
+                  <a href="longfist.php">Straightsword</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Broadsword</a>
+                  <a href="longfist.php">Southern Broadsword</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Staff</a>
+                  <a href="longfist.php">Staff</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Spear</a>
+                  <a href="longfist.php">Spear</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Staff</a>
+                  <a href="longfist.php">Southern Staff</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Other Barehand</a>
+                  <a href="longfist.php">Other Barehand</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Other Weapon</a>
+                  <a href="longfist.php">Other Weapon</a>
                 </li>
               </ul>
 
