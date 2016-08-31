@@ -5,17 +5,20 @@
 $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
 
-$sql = "SELECT id, firstName, lastName, gender, birthDate, level from cLongFist";
-$result = mysqli_query($link, $sql);
+$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from cLongFist";
+$resultAll = mysqli_query($link, $retrieveAll);
+
+$currentID = 100;
+
 if(isset($_REQUEST['submit'])) {
     $score1=$_POST['score1'];
     $err = 0;
     if (!$_POST['score1']) {
-        $errScore1 = "Please enter your score";
+        $errScore1 = "Please enter score";
         $err = 1;
     }
     if (!$err) {
-        $insertScore1="UPDATE cLongFist SET score1=$score1 WHERE id=100";
+        $insertScore1="UPDATE cLongFist SET score1=$score1 WHERE id=$currentID";
         mysqli_query($link,$insertScore1) or die(mysqli_error($link));
     }
 }
@@ -131,6 +134,7 @@ if(isset($_REQUEST['submit'])) {
     </ul>
   </header>
 
+
   <main>
     <div class="row">
       <div class="col s12">
@@ -168,7 +172,12 @@ if(isset($_REQUEST['submit'])) {
         <li><a href="#IMT">IMT</a></li>
       </ul>
       <br>
-      <h2 class="header">Ryan Jew</h2>
+<?php
+$retrieveCurrent = "SELECT id, firstName, lastName, gender, birthDate, level FROM cLongFist WHERE id=$currentID";
+$resultCurrent = mysqli_query($link, $retrieveCurrent);
+      $row = mysqli_fetch_assoc($resultCurrent);
+      echo "<h2 class='header'>".$row[firstName]." ".$row[lastName]."</h2>"
+?>
       <div class="row">
         <form class="col s12" action='' method="POST">
           <div class="row">
@@ -193,19 +202,20 @@ if(isset($_REQUEST['submit'])) {
 
 
 <?php
-  if (mysqli_num_rows($result) > 0) {
-      // output data of each row
-      while($row = mysqli_fetch_assoc($result)) {
-          echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "<br>";
-      }
-  } else {
-      echo "0 results";
-  }
+  // if (mysqli_num_rows($resultAll) > 0) {
+  //     // output data of each row
+  //     while($row = mysqli_fetch_assoc($resultAll)) {
+  //         echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "<br>";
+  //     }
+  // } else {
+  //     echo "0 results";
+  // }
 ?>
       
     </div>
   </main>
   <!--  Scripts-->
+  <script src="js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
