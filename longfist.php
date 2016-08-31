@@ -13,7 +13,7 @@
 <body>
   <header>
     <nav class="indigo" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">SoCal Wushu Tournament Scoring</a>
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Long Fist</a>
 
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
@@ -21,11 +21,11 @@
     <ul id="nav-mobile" class="side-nav fixed">
       <li class="no-padding">
         <ul class="collapsible collapsible-accordian">
-          <li class="bold">
-            <a class="collapsible-header waves-effect waves-pink">Contemporary</a>
+          <li class="bold active">
+            <a class="collapsible-header active waves-effect waves-pink">Contemporary</a>
             <div class="collapsible-body">
               <ul>
-                <li>
+                <li class="active">
                   <a href="longfist.php">Long Fist</a>
                 </li>
                 <li>
@@ -110,6 +110,20 @@
     </ul>
   </header>
 
+  <main>
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s2"><a href="#judge1">Judge 1</a></li>
+          <li class="tab col s2"><a href="#judge2">Judge 2</a></li>
+          <li class="tab col s2"><a href="#judge3">Judge 3</a></li>
+          <li class="tab col s2"><a href="#judge4">Judge 4</a></li>
+          <li class="tab col s2"><a href="#headjudge">Head Judge</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>Sample text. Selection for Level, Age, Gender here and scoring stuff below</p>
+  </main>
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>

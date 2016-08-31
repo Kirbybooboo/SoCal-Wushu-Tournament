@@ -7010,7 +7010,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav .collapsible-body li.active,
 .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73;
+  background-color: #f06292;
 }
 
 .side-nav .collapsible-body li.active a,
@@ -8463,4 +8463,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .picker--time .picker__box {
     margin-bottom: 5em;
   }
+}
+
+header, footer, main {
+  padding-left:300px;
 }
