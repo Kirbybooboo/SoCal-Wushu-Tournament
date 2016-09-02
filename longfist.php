@@ -11,15 +11,16 @@ $resultAll = mysqli_query($link, $retrieveAll);
 $currentID = 100;
 
 if(isset($_REQUEST['submit'])) {
-    $score1=$_POST['score1'];
+    $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
     $err = 0;
-    if (!$_POST['score1']) {
-        $errScore1 = "Please enter score";
+    if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) {
+        $errScore = "Please enter score";
         $err = 1;
     }
     if (!$err) {
-        $insertScore1="UPDATE cLongFist SET score1=$score1 WHERE id=$currentID";
-        mysqli_query($link,$insertScore1) or die(mysqli_error($link));
+        $scoreTotal = array_sum($scores)/count($scores);
+        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$currentID";
+        mysqli_query($link,$insertScore) or die(mysqli_error($link));
     }
 }
 ?>
@@ -36,13 +37,17 @@ if(isset($_REQUEST['submit'])) {
 </head>
 <body>
   <header>
-    <nav class="indigo" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Long Fist</a>
-
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    <nav class="indigo" role="navigation" style="height: 144px">
+      <div class="nav-wrapper container">
+        <a class="page-title">Long Fist</a>
       </div>
     </nav>
     <ul id="nav-mobile" class="side-nav fixed">
+      <li class="logo">
+        <a id="logo-container" class="brand-logo" style="height: 144px">
+            <img class="responsive-img" src="img/front-logo.png">
+        </a>
+      </li>
       <li class="no-padding">
         <ul class="collapsible collapsible-accordian">
           <li class="bold active">
@@ -150,14 +155,14 @@ if(isset($_REQUEST['submit'])) {
     <div class="container">
       <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Level/Gender/Age</a>
       <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#AFA">AFA</a></li>
-        <li><a href="#AMA">AMA</a></li>
+        <li><a href="#AFA" onclick="changeDivision('advance','female','adult')">AFA</a></li>
+        <li><a href="#AMA" onclick="changeDivision('advance','male','adult')">AMA</a></li>
         <li><a href="#AFC">AFC</a></li>
         <li><a href="#AMC">AMC</a></li>
         <li><a href="#AFT">AFT</a></li>
         <li><a href="#AMT">AMT</a></li>
         <li class="divider"></li>
-        <li><a href="#BFA">BFA</a></li>
+        <li><a href="#BFA" onclick="changeDivision('beginner','female','adult')">BFA</a></li>
         <li><a href="#BMA">BMA</a></li>
         <li><a href="#BFC">BFC</a></li>
         <li><a href="#BMC">BMC</a></li>
@@ -181,17 +186,33 @@ $resultCurrent = mysqli_query($link, $retrieveCurrent);
       <div class="row">
         <form class="col s12" action='' method="POST">
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s2">
               <input id="score1" name="score1" type="text">
-              <label for="score1">Score</label>
+              <label for="score1">Score 1</label>
+            </div>
+            <div class="input-field col s2">
+              <input id="score2" name="score2" type="text">
+              <label for="score2">Score 2</label>
+            </div>
+            <div class="input-field col s2">
+              <input id="score3" name="score3" type="text">
+              <label for="score3">Score 3</label>
+            </div>
+            <div class="input-field col s2">
+              <input id="score4" name="score4" type="text">
+              <label for="score4">Score 4</label>
+            </div>
+            <div class="input-field col s2">
+              <input id="score5" name="score5" type="text">
+              <label for="score5">Score 5</label>
             </div>
           </div>
-          <div class="row">
+<!--           <div class="row">
             <div class="input-field col s12">
               <textarea id="notes1" class="materialize-textarea"></textarea>
               <label for="notes1">Notes on competitor</label>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="input-field col s12">
               <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Submit</button>
@@ -200,16 +221,23 @@ $resultCurrent = mysqli_query($link, $retrieveCurrent);
         </form>
       </div>
 
-
 <?php
-  // if (mysqli_num_rows($resultAll) > 0) {
-  //     // output data of each row
-  //     while($row = mysqli_fetch_assoc($resultAll)) {
-  //         echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "<br>";
-  //     }
-  // } else {
-  //     echo "0 results";
-  // }
+  if (mysqli_num_rows($resultAll) > 0) {
+      // output data of each row
+      while($row = mysqli_fetch_assoc($resultAll)) {
+          if ($row["id"] != $currentID)
+          {
+              echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "     ";
+          }
+          else
+          {
+              echo "<strong>id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "</strong>     ";
+          }
+          
+      }
+  } else {
+      echo "0 results";
+  }
 ?>
       
     </div>
