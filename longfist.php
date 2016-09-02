@@ -8,7 +8,13 @@ mysqli_select_db($link,"wushuclub");
 $retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from cLongFist";
 $resultAll = mysqli_query($link, $retrieveAll);
 
-$currentID = 100;
+if(mysqli_num_rows($resultAll) > 0)
+{
+  $firstRow = mysqli_fetch_assoc($resultAll);
+  $firstID = $firstRow['id'];
+  $firstFirstName = $firstRow['firstName'];
+  $firstLastName = $firstRow['lastName'];
+}
 
 if(isset($_REQUEST['submit'])) {
     $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
@@ -19,7 +25,7 @@ if(isset($_REQUEST['submit'])) {
     }
     if (!$err) {
         $scoreTotal = array_sum($scores)/count($scores);
-        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$currentID";
+        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$firstID";
         mysqli_query($link,$insertScore) or die(mysqli_error($link));
     }
 }
@@ -157,31 +163,45 @@ if(isset($_REQUEST['submit'])) {
       <ul id="dropdown1" class="dropdown-content">
         <li><a href="#AFA" onclick="changeDivision('advance','female','adult')">AFA</a></li>
         <li><a href="#AMA" onclick="changeDivision('advance','male','adult')">AMA</a></li>
-        <li><a href="#AFC">AFC</a></li>
-        <li><a href="#AMC">AMC</a></li>
-        <li><a href="#AFT">AFT</a></li>
-        <li><a href="#AMT">AMT</a></li>
+        <li><a href="#AFC" onclick="changeDivision('advance','female','child')">AFC</a></li>
+        <li><a href="#AMC" onclick="changeDivision('advance','male','child')">AMC</a></li>
+        <li><a href="#AFT" onclick="changeDivision('advance','female','teen')">AFT</a></li>
+        <li><a href="#AMT" onclick="changeDivision('advance','male','teen')">AMT</a></li>
         <li class="divider"></li>
         <li><a href="#BFA" onclick="changeDivision('beginner','female','adult')">BFA</a></li>
-        <li><a href="#BMA">BMA</a></li>
-        <li><a href="#BFC">BFC</a></li>
-        <li><a href="#BMC">BMC</a></li>
-        <li><a href="#BFT">BFT</a></li>
-        <li><a href="#BMT">BMT</a></li>
+        <li><a href="#BMA" onclick="changeDivision('beginner','male','adult')">BMA</a></li>
+        <li><a href="#BFC" onclick="changeDivision('beginner','female','child')">BFC</a></li>
+        <li><a href="#BMC" onclick="changeDivision('beginner','male','child')">BMC</a></li>
+        <li><a href="#BFT" onclick="changeDivision('beginner','female','teen')">BFT</a></li>
+        <li><a href="#BMT" onclick="changeDivision('beginner','male','teen')">BMT</a></li>
         <li class="divider"></li>
-        <li><a href="#IFA">IFA</a></li>
-        <li><a href="#IMA">IMA</a></li>
-        <li><a href="#IFC">IFC</a></li>
-        <li><a href="#IMC">IMC</a></li>
-        <li><a href="#IFT">IFT</a></li>
-        <li><a href="#IMT">IMT</a></li>
+        <li><a href="#IFA" onclick="changeDivision('intermediate','female','adult')">IFA</a></li>
+        <li><a href="#IMA" onclick="changeDivision('intermediate','male','adult')">IMA</a></li>
+        <li><a href="#IFC" onclick="changeDivision('intermediate','female','child')">IFC</a></li>
+        <li><a href="#IMC" onclick="changeDivision('intermediate','male','child')">IFC</a></li>
+        <li><a href="#IFT" onclick="changeDivision('intermediate','female','teen')">IFT</a></li>
+        <li><a href="#IMT" onclick="changeDivision('intermediate','male','teen')">IMT</a></li>
       </ul>
-      <br>
+      <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
+      <ul id="dropdown2" class="dropdown-content">
 <?php
-$retrieveCurrent = "SELECT id, firstName, lastName, gender, birthDate, level FROM cLongFist WHERE id=$currentID";
-$resultCurrent = mysqli_query($link, $retrieveCurrent);
-      $row = mysqli_fetch_assoc($resultCurrent);
-      echo "<h2 class='header'>".$row[firstName]." ".$row[lastName]."</h2>"
+  echo "<li><a onclick='changeCompetitor(".$firstID.")'>".$firstFirstName." ".$firstLastName."</a></li>";
+  if (mysqli_num_rows($resultAll) > 0) 
+  {
+      while($row = mysqli_fetch_assoc($resultAll)) 
+      {
+      echo "<li><a onclick='changeCompetitor(".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
+      }
+  }
+      echo "</ul>";
+      echo "<br>";
+
+$retrieveFirst = "SELECT id, firstName, lastName, gender, birthDate, level FROM cLongFist WHERE id=$firstID";
+$resultFirst = mysqli_query($link, $retrieveFirst);
+      $row = mysqli_fetch_assoc($resultFirst);
+      echo "<div id='competitorName'>";
+      echo "<h2 class='header'>".$row['firstName']." ".$row['lastName']."</h2>";
+      echo "</div>";
 ?>
       <div class="row">
         <form class="col s12" action='' method="POST">
@@ -219,27 +239,7 @@ $resultCurrent = mysqli_query($link, $retrieveCurrent);
             </div>
           </div>
         </form>
-      </div>
-
-<?php
-  if (mysqli_num_rows($resultAll) > 0) {
-      // output data of each row
-      while($row = mysqli_fetch_assoc($resultAll)) {
-          if ($row["id"] != $currentID)
-          {
-              echo "id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "     ";
-          }
-          else
-          {
-              echo "<strong>id: " . $row["id"]. " - Name: " . $row["firstName"]. " " . $row["lastName"]. "</strong>     ";
-          }
-          
-      }
-  } else {
-      echo "0 results";
-  }
-?>
-      
+      </div>      
     </div>
   </main>
   <!--  Scripts-->

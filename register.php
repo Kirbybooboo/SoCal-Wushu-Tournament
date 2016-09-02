@@ -71,7 +71,7 @@ if(isset($_REQUEST['submit'])) {
         (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthernFist`,`tSouthernFist`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `chen`, `yang`, `taijiWeapon`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSouthernStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthernFist', '$tSouthernFist', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$chen','$yang', '$taijiWeapon')";
         mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
 
-        //Creating email
+        //Creating email and insert into individual event tables
         $count = 0;
         $subject = 'SoCal Wushu Tournament Registration Confirmation';
         $msg = "Thank you for registering for the SoCal Wushu Tournament. Below you will find your registration information. If you have any concerns or changes you want to make, please contact wushuclubuci@gmail.com.\n\n".
@@ -83,78 +83,135 @@ if(isset($_REQUEST['submit'])) {
         if ($cLongFist=="1") {
             $msg.= "Contemporary Long Fist\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cLongFist`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cSouthernFist=="1") {
             $msg.= "Contemporary Southern Fist\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cSouthernFist`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cBroadsword=="1") {
             $msg.= "Contemporary Broadsword\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cBroadsword`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cStraightsword=="1") {
             $msg.= "Contemporary Straightsword\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cStraightsword`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cSouthernBroadsword=="1") {
             $msg.= "Contemporary Southern Broadsword\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cSouthernBroadsword`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cStaff=="1") {
             $msg.= "Contemporary Staff\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cStaff`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cSpear=="1") {
             $msg.= "Contemporary Spear\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cSpear`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cSouthernStaff=="1") {
             $msg.= "Contemporary Southern Staff\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cSouthernStaff`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cOtherBarehand=="1") {
             $msg.= "Contemporary Other Barehand\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cOtherBarehand`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($cOtherWeapon=="1") {
             $msg.= "Contemporary Other Weapon\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`cOtherWeapon`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($tNorthernFist=="1") {
             $msg.= "Traditional Northern Fist\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`tNorthernFist`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($tSouthernFist=="1") {
             $msg.= "Traditional Southern Fist\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`tSouthernFist`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($tShortWeapon=="1") {
             $msg.= "Traditional Short Weapon\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`tShortWeapon`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($tLongWeapon=="1") {
             $msg.= "Traditional Long Weapon\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`tLongWeapon`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($tOtherBarehand=="1") {
             $msg.= "Traditional Other Barehand\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`tOtherBarehand`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($tOtherWeapon=="1") {
             $msg.= "Traditional Other Weapon\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`tOtherWeapon`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($chen=="1") {
             $msg.= "Chen Style\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`chen`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($yang=="1") {
             $msg.= "Yang Style\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`yang`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         if ($taijiWeapon=="1") {
             $msg.= "Taiji Weapon\n";
             $count += 1;
+            $insertEvent="INSERT INTO `wushuclub`.`taijiWeapon`
+            (`firstName`, `lastName`, `gender`, `birthDate`, `level`, `score1`, `score2`, `score3`, `score4`, `score5`, `scoreTotal`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$level', NULL, NULL, NULL, NULL, NULL, NULL)";
+            mysqli_query($link, $insertEvent) or die(mysqli_error($link));
         }
         $price = 50 + ($count-1)*10;
         $msg.= "\nPrice: $".$price."\n";
