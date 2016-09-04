@@ -71,6 +71,7 @@ if(isset($_REQUEST['submit'])) {
         (`firstName`, `lastName`, `gender`, `birthDate`, `email`, `level`,`cLongFist`, `cSouthernFist`, `cBroadsword`, `cStraightsword`, `cSouthernBroadsword`, `cStaff`, `cSpear`,`cSouthernStaff`,`cOtherBarehand`,`cOtherWeapon`,`tNorthernFist`,`tSouthernFist`,`tShortWeapon`,`tLongWeapon`,`tOtherBarehand`,`tOtherWeapon`, `chen`, `yang`, `taijiWeapon`) VALUES ('$firstName', '$lastName', '$gender', '$birthDate', '$email', '$level', '$cLongFist', '$cSouthernFist', '$cBroadsword', '$cStraightsword', '$cSouthernBroadsword', '$cStaff', '$cSpear', '$cSouthernStaff', '$cOtherBarehand', '$cOtherWeapon', '$tNorthernFist', '$tSouthernFist', '$tShortWeapon', '$tLongWeapon', '$tOtherBarehand', '$tOtherWeapon', '$chen','$yang', '$taijiWeapon')";
         mysqli_query($link,$insqDbtb) or die(mysqli_error($link));
 
+
         //Creating email and insert into individual event tables
         $count = 0;
         $subject = 'SoCal Wushu Tournament Registration Confirmation';
