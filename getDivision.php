@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result))
     {
-    	echo "<li><a onclick='changeCompetitor(\"cLongFist\", ".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
+    	echo "<li><a onclick='changeCompetitor(\"".$event."\", ".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
     }
 }
 else

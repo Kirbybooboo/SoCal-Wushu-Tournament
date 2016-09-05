@@ -6,7 +6,7 @@ $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to 
 mysqli_select_db($link,"wushuclub");
 
 if(isset($_REQUEST['submit'])) {
-    $email=$_POST['email'];
+    $email=trim($_POST['email']);
     $firstName=$_POST['firstName'];
     $lastName=$_POST['lastName'];
     $gender=$_POST['gender'];
@@ -35,13 +35,13 @@ if(isset($_REQUEST['submit'])) {
     // Validation
     $err = 0;
 
-    if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    if (!$_POST['email'] || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errEmail = 'Please enter a valid email address';
         $err = 1;
     }
 
     if (!$_POST['firstName']) {
-        $errFirstName = "Please enter your first name";
+        $errFirstName = "Please enter your first name"; 
         $err = 1;
     }
 

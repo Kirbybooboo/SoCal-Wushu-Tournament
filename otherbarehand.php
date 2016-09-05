@@ -5,7 +5,7 @@
 $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
 
-$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from cLongFist";
+$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from cOtherBarehand";
 $resultAll = mysqli_query($link, $retrieveAll);
 
 if(mysqli_num_rows($resultAll) > 0)
@@ -25,7 +25,7 @@ if(isset($_REQUEST['submit'])) {
     }
     if (!$err) {
         $scoreTotal = array_sum($scores)/count($scores);
-        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$firstID";
+        $insertScore="UPDATE cOtherBarehand SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$firstID";
         mysqli_query($link,$insertScore) or die(mysqli_error($link));
     }
 }
@@ -45,7 +45,7 @@ if(isset($_REQUEST['submit'])) {
   <header>
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
-        <a class="page-title" id="eventTitle">Long Fist</a>
+        <a class="page-title" id="eventTitle">Other Barehand</a>
       </div>
     </nav>
     <ul id="nav-mobile" class="side-nav fixed">
@@ -60,7 +60,7 @@ if(isset($_REQUEST['submit'])) {
             <a class="collapsible-header active waves-effect waves-pink">Contemporary</a>
             <div class="collapsible-body">
               <ul>
-                <li class="active">
+                <li>
                   <a href="longfist.php">Long Fist</a>
                 </li>
                 <li>
@@ -84,7 +84,7 @@ if(isset($_REQUEST['submit'])) {
                 <li>
                   <a href="southernstaff.php">Southern Staff</a>
                 </li>
-                <li>
+                <li class="active">
                   <a href="otherbarehand.php">Other Barehand</a>
                 </li>
                 <li>
@@ -161,42 +161,42 @@ if(isset($_REQUEST['submit'])) {
     <div class="container">
       <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Level/Gender/Age</a>
       <ul id="dropdown1" class="dropdown-content">
-        <li><a onclick="changeDivision('cLongFist','advance','female','adult')">AFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','male','adult')">AMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','female','child')">AFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','male','child')">AMC</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','female','teen')">AFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','male','teen')">AMT</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','advance','female','adult')">AFA</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','advance','male','adult')">AMA</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','advance','female','child')">AFC</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','advance','male','child')">AMC</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','advance','female','teen')">AFT</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','advance','male','teen')">AMT</a></li>
         <li class="divider"></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','female','adult')">BFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','male','adult')">BMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','female','child')">BFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','male','child')">BMC</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','female','teen')">BFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','male','teen')">BMT</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','beginner','female','adult')">BFA</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','beginner','male','adult')">BMA</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','beginner','female','child')">BFC</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','beginner','male','child')">BMC</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','beginner','female','teen')">BFT</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','beginner','male','teen')">BMT</a></li>
         <li class="divider"></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','adult')">IFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','adult')">IMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','child')">IFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','child')">IFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','teen')">IFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','teen')">IMT</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','intermediate','female','adult')">IFA</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','intermediate','male','adult')">IMA</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','intermediate','female','child')">IFC</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','intermediate','male','child')">IFC</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','intermediate','female','teen')">IFT</a></li>
+        <li><a onclick="changeDivision('cOtherBarehand','intermediate','male','teen')">IMT</a></li>
       </ul>
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
 <?php
-  echo "<li><a onclick='changeCompetitor(\"cLongFist\", ".$firstID.")'>".$firstFirstName." ".$firstLastName."</a></li>";
+  echo "<li><a onclick='changeCompetitor(\"cOtherBarehand\", ".$firstID.")'>".$firstFirstName." ".$firstLastName."</a></li>";
   if (mysqli_num_rows($resultAll) > 0) 
   {
       while($row = mysqli_fetch_assoc($resultAll)) 
       {
-      echo "<li><a onclick='changeCompetitor(\"cLongFist\", ".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
+      echo "<li><a onclick='changeCompetitor(\"cOtherBarehand\", ".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
       }
   }
       echo "</ul>";
       echo "<br>";
 
-$retrieveFirst = "SELECT id, firstName, lastName, gender, birthDate, level FROM cLongFist WHERE id=$firstID";
+$retrieveFirst = "SELECT id, firstName, lastName, gender, birthDate, level FROM cOtherBarehand WHERE id=$firstID";
 $resultFirst = mysqli_query($link, $retrieveFirst);
       $row = mysqli_fetch_assoc($resultFirst);
       echo "<div id='competitorName'>";
