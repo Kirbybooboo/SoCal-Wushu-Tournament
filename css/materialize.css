@@ -5140,7 +5140,7 @@ button.btn-floating {
 
 .dropdown-content li > a, .dropdown-content li > span {
   font-size: 16px;
-  color: #26a69a;
+  color: #5c6bc0;
   display: block;
   line-height: 22px;
   padding: 14px 16px;
@@ -5940,7 +5940,7 @@ textarea.materialize-textarea + label:after {
 }
 
 .input-field .prefix.active {
-  color: #26a69a;
+  color: #5c6bc0;
 }
 
 .input-field .prefix ~ input,

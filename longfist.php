@@ -18,15 +18,20 @@ if(mysqli_num_rows($resultAll) > 0)
 
 if(isset($_REQUEST['submit'])) {
     $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
+    $deductions = $_POST['deductions'];
     $err = 0;
     if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) {
         $errScore = "Please enter score";
         $err = 1;
     }
     if (!$err) {
-        $scoreTotal = array_sum($scores)/count($scores);
-        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$firstID";
+        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4] WHERE id=$firstID";
         mysqli_query($link,$insertScore) or die(mysqli_error($link));
+        sort($scores);
+        array_pop($scores);
+        array_shift($scores);
+        $scoreTotal = (array_sum($scores)/count($scores)) - $deductions;
+        $insertScoreTotal="UPDATE cLongFist SET scoreTotal=$scoreTotal where id=$firstID"
     }
 }
 ?>
@@ -227,12 +232,16 @@ $resultFirst = mysqli_query($link, $retrieveFirst);
               <label for="score5">Score 5</label>
             </div>
           </div>
-<!--           <div class="row">
+          <div class="row">
+            <div class="input-field col s2">
+              <input id="deductions" name="deductions" type="text">
+              <label for="deductions">Deductions</label>
+          <div class="row">
             <div class="input-field col s12">
               <textarea id="notes1" class="materialize-textarea"></textarea>
               <label for="notes1">Notes on competitor</label>
             </div>
-          </div> -->
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Submit</button>

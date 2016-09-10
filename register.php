@@ -345,7 +345,7 @@ if(isset($_REQUEST['submit'])) {
         <form class="form-horizontal" action='' method="POST">
           <fieldset>
             <div id="lead">
-              <legend class="">Competitor registration opening soon</legend>
+              <legend class="">Competitor registration coming soon!</legend>
             </div>
          
             <div class="control-group">
@@ -560,7 +560,7 @@ if(isset($_REQUEST['submit'])) {
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
-                <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg">Submit</button>
+                <!-- <button type="submit" name="submit" id="submit" class="btn btn-primary btn-lg">Submit</button> -->
               </div>
               <br>
             </div>
