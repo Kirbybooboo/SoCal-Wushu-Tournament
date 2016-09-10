@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,16 +10,16 @@
 $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
 
-$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from cLongFist";
+$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from competitors";
 $resultAll = mysqli_query($link, $retrieveAll);
 
-if(mysqli_num_rows($resultAll) > 0)
-{
-  $firstRow = mysqli_fetch_assoc($resultAll);
-  $firstID = $firstRow['id'];
-  $firstFirstName = $firstRow['firstName'];
-  $firstLastName = $firstRow['lastName'];
-}
+// if(mysqli_num_rows($resultAll) > 0)
+// {
+//   $firstRow = mysqli_fetch_assoc($resultAll);
+//   $_SESSION["id"] = $firstRow['id'];
+//   $firstFirstName = $firstRow['firstName'];
+//   $firstLastName = $firstRow['lastName'];
+// }
 
 if(isset($_REQUEST['submit'])) {
     $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
@@ -25,13 +30,14 @@ if(isset($_REQUEST['submit'])) {
         $err = 1;
     }
     if (!$err) {
-        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4] WHERE id=$firstID";
+        $insertScore="UPDATE competitors SET cLongFistScore1=$scores[0], cLongFistScore2=$scores[1], cLongFistScore3=$scores[2], cLongFistScore4=$scores[3], cLongFistScore5=$scores[4] WHERE id=".$_SESSION['id'];
         mysqli_query($link,$insertScore) or die(mysqli_error($link));
         sort($scores);
         array_pop($scores);
         array_shift($scores);
         $scoreTotal = (array_sum($scores)/count($scores)) - $deductions;
-        $insertScoreTotal="UPDATE cLongFist SET scoreTotal=$scoreTotal where id=$firstID"
+        $insertScoreTotal="UPDATE competitors SET cLongFistScoreTotal=$scoreTotal where id=".$_SESSION['id'];
+        mysqli_query($link,$insertScoreTotal) or die(mysql_error($link));
     }
 }
 ?>
@@ -173,37 +179,38 @@ if(isset($_REQUEST['submit'])) {
         <li><a onclick="changeDivision('cLongFist','advance','female','teen')">AFT</a></li>
         <li><a onclick="changeDivision('cLongFist','advance','male','teen')">AMT</a></li>
         <li class="divider"></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','female','adult')">IFA</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','male','adult')">IMA</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','female','child')">IFC</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','male','child')">IMC</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','female','teen')">IFT</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','male','teen')">IMT</a></li>
+        <li class="divider"></li>
         <li><a onclick="changeDivision('cLongFist','beginner','female','adult')">BFA</a></li>
         <li><a onclick="changeDivision('cLongFist','beginner','male','adult')">BMA</a></li>
         <li><a onclick="changeDivision('cLongFist','beginner','female','child')">BFC</a></li>
         <li><a onclick="changeDivision('cLongFist','beginner','male','child')">BMC</a></li>
         <li><a onclick="changeDivision('cLongFist','beginner','female','teen')">BFT</a></li>
         <li><a onclick="changeDivision('cLongFist','beginner','male','teen')">BMT</a></li>
-        <li class="divider"></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','adult')">IFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','adult')">IMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','child')">IFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','child')">IFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','teen')">IFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','teen')">IMT</a></li>
+
       </ul>
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
 <?php
-  echo "<li><a onclick='changeCompetitor(\"cLongFist\", ".$firstID.")'>".$firstFirstName." ".$firstLastName."</a></li>";
+  // echo "<li><a onclick='changeCompetitor(".$_SESSION['id'].")'>".$firstFirstName." ".$firstLastName."</a></li>";
   if (mysqli_num_rows($resultAll) > 0) 
   {
       while($row = mysqli_fetch_assoc($resultAll)) 
       {
-      echo "<li><a onclick='changeCompetitor(\"cLongFist\", ".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
+      echo "<li><a onclick='changeCompetitor(".$row['id'].")'>".$row['firstName']." ".$row['lastName']."</a></li>";
       }
   }
       echo "</ul>";
       echo "<br>";
 
-$retrieveFirst = "SELECT id, firstName, lastName, gender, birthDate, level FROM cLongFist WHERE id=$firstID";
-$resultFirst = mysqli_query($link, $retrieveFirst);
-      $row = mysqli_fetch_assoc($resultFirst);
+$retrieveCompetitor = "SELECT id, firstName, lastName, gender, birthDate, level FROM competitors WHERE id=".$_SESSION['id'];
+$result = mysqli_query($link, $retrieveCompetitor);
+      $row = mysqli_fetch_assoc($result);
       echo "<div id='competitorName'>";
       echo "<h2 class='header'>".$row['firstName']." ".$row['lastName']."</h2>";
       echo "</div>";

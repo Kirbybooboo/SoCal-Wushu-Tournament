@@ -3,9 +3,9 @@ function changeDivision(event, level, gender, age)
 	$("#dropdown2").load("getDivision.php?event="+event+"&level="+level+"&gender="+gender+"&age="+age);
 }
 
-function changeCompetitor(event, id)
+function changeCompetitor(id)
 {
-	$("#competitorName").load("getName.php?event="+event+"&id="+id);
+	$("#competitorName").load("getName.php?id="+id);
 }
 
 function changeEventTitle(eventName)
