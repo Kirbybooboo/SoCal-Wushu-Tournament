@@ -13,21 +13,18 @@ mysqli_select_db($link,"wushuclub");
 $retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from competitors";
 $resultAll = mysqli_query($link, $retrieveAll);
 
-// if(mysqli_num_rows($resultAll) > 0)
-// {
-//   $firstRow = mysqli_fetch_assoc($resultAll);
-//   $_SESSION["id"] = $firstRow['id'];
-//   $firstFirstName = $firstRow['firstName'];
-//   $firstLastName = $firstRow['lastName'];
-// }
-
 if(isset($_REQUEST['submit'])) {
     $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
     $deductions = $_POST['deductions'];
     $err = 0;
-    if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) {
+    if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) 
+    {
         $errScore = "Please enter score";
         $err = 1;
+    }
+    if (!$_POST['deductions'])
+    {
+        $deductions = 0;
     }
     if (!$err) {
         $insertScore="UPDATE competitors SET cLongFistScore1=$scores[0], cLongFistScore2=$scores[1], cLongFistScore3=$scores[2], cLongFistScore4=$scores[3], cLongFistScore5=$scores[4] WHERE id=".$_SESSION['id'];
@@ -35,7 +32,7 @@ if(isset($_REQUEST['submit'])) {
         sort($scores);
         array_pop($scores);
         array_shift($scores);
-        $scoreTotal = (array_sum($scores)/count($scores)) - $deductions;
+        $scoreTotal = (array_sum($scores)/count($scores)) - abs($deductions);
         $insertScoreTotal="UPDATE competitors SET cLongFistScoreTotal=$scoreTotal where id=".$_SESSION['id'];
         mysqli_query($link,$insertScoreTotal) or die(mysql_error($link));
     }
@@ -197,7 +194,6 @@ if(isset($_REQUEST['submit'])) {
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
 <?php
-  // echo "<li><a onclick='changeCompetitor(".$_SESSION['id'].")'>".$firstFirstName." ".$firstLastName."</a></li>";
   if (mysqli_num_rows($resultAll) > 0) 
   {
       while($row = mysqli_fetch_assoc($resultAll)) 
