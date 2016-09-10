@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,28 +10,31 @@
 $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
 
-$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from cLongFist";
+$retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from competitors";
 $resultAll = mysqli_query($link, $retrieveAll);
-
-if(mysqli_num_rows($resultAll) > 0)
-{
-  $firstRow = mysqli_fetch_assoc($resultAll);
-  $firstID = $firstRow['id'];
-  $firstFirstName = $firstRow['firstName'];
-  $firstLastName = $firstRow['lastName'];
-}
 
 if(isset($_REQUEST['submit'])) {
     $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
+    $deductions = $_POST['deductions'];
     $err = 0;
-    if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) {
+    if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) 
+    {
         $errScore = "Please enter score";
         $err = 1;
     }
+    if (!$_POST['deductions'])
+    {
+        $deductions = 0;
+    }
     if (!$err) {
-        $scoreTotal = array_sum($scores)/count($scores);
-        $insertScore="UPDATE cLongFist SET score1=$scores[0], score2=$scores[1], score3=$scores[2], score4=$scores[3], score5=$scores[4], scoreTotal=$scoreTotal WHERE id=$firstID";
+        $insertScore="UPDATE competitors SET cLongFistScore1=$scores[0], cLongFistScore2=$scores[1], cLongFistScore3=$scores[2], cLongFistScore4=$scores[3], cLongFistScore5=$scores[4] WHERE id=".$_SESSION['id'];
         mysqli_query($link,$insertScore) or die(mysqli_error($link));
+        sort($scores);
+        array_pop($scores);
+        array_shift($scores);
+        $scoreTotal = (array_sum($scores)/count($scores)) - abs($deductions);
+        $insertScoreTotal="UPDATE competitors SET cLongFistScoreTotal=$scoreTotal where id=".$_SESSION['id'];
+        mysqli_query($link,$insertScoreTotal) or die(mysql_error($link));
     }
 }
 ?>
@@ -45,7 +53,7 @@ if(isset($_REQUEST['submit'])) {
   <header>
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
-        <a class="page-title">SoCal Wushu Tournament Scoring</a>
+        <a class="page-title" id="eventTitle">Long Fist</a>
       </div>
     </nav>
     <ul id="nav-mobile" class="side-nav fixed">
@@ -55,40 +63,40 @@ if(isset($_REQUEST['submit'])) {
         </a>
       </li>
       <li class="no-padding">
-        <ul class="collapsible collapsible-accordian">
+        <ul id="navEvent" class="collapsible collapsible-accordian">
           <li class="bold active">
             <a class="collapsible-header active waves-effect waves-pink">Contemporary</a>
             <div class="collapsible-body">
               <ul>
                 <li class="active">
-                  <a href="longfist.php">Long Fist</a>
+                  <a href="#" onclick="changeEventTitle('cLongFist')">Long Fist</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Fist</a>
+                  <a href="#" onclick="changeEventTitle('cSouthernFist')">Southern Fist</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Broadsword</a>
+                  <a href="#" onclick="changeEventTitle('cBroadsword')">Broadsword</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Straightsword</a>
+                  <a href="#" onclick="changeEventTitle('cStraightsword')">Straightsword</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Broadsword</a>
+                  <a href="#" onclick="changeEventTitle('cSouthernBroadsword')">Southern Broadsword</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Staff</a>
+                  <a href="#" onclick="changeEventTitle('cStaff')">Staff</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Spear</a>
+                  <a href="#" onclick="changeEventTitle('cSpear')">Spear</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Staff</a>
+                  <a href="#" onclick="changeEventTitle('cSouthernStaff')">Southern Staff</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Other Barehand</a>
+                  <a href="#" onclick="changeEventTitle('cOtherBarehand')">Other Barehand</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Other Weapon</a>
+                  <a href="#" onclick="changeEventTitle('cOtherWeapon')">Other Weapon</a>
                 </li>
               </ul>
 
@@ -100,22 +108,22 @@ if(isset($_REQUEST['submit'])) {
 
               <ul>
                 <li>
-                  <a href="longfist.html">Northern Fist</a>
+                  <a href="#" onclick="changeEventTitle('tNorthernFist')">Northern Fist</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Southern Fist</a>
+                  <a href="#" onclick="changeEventTitle('tSouthernFist')">Southern Fist</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Short Weapon</a>
+                  <a href="#" onclick="changeEventTitle('tShortWeapon')">Short Weapon</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Long Weapon</a>
+                  <a href="#" onclick="changeEventTitle('tLongWeapon')">Long Weapon</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Other Barehand</a>
+                  <a href="#" onclick="changeEventTitle('tOtherBarehand')">Other Barehand</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Other Weapon</a>
+                  <a href="#" onclick="changeEventTitle('tOtherWeapon')">Other Weapon</a>
                 </li>
               </ul>
 
@@ -127,13 +135,13 @@ if(isset($_REQUEST['submit'])) {
 
               <ul>
                 <li>
-                  <a href="longfist.html">Chen Style</a>
+                  <a href="#" onclick="changeEventTitle('chen')">Chen Style</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Yang Style</a>
+                  <a href="#" onclick="changeEventTitle('yang')">Yang Style</a>
                 </li>
                 <li>
-                  <a href="longfist.html">Taiji Weapon</a>
+                  <a href="#" onclick="changeEventTitle('taijiWeapon')">Taiji Weapon</a>
                 </li>
               </ul>
 
@@ -161,31 +169,31 @@ if(isset($_REQUEST['submit'])) {
     <div class="container">
       <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Level/Gender/Age</a>
       <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#AFA" onclick="changeDivision('advance','female','adult')">AFA</a></li>
-        <li><a href="#AMA" onclick="changeDivision('advance','male','adult')">AMA</a></li>
-        <li><a href="#AFC" onclick="changeDivision('advance','female','child')">AFC</a></li>
-        <li><a href="#AMC" onclick="changeDivision('advance','male','child')">AMC</a></li>
-        <li><a href="#AFT" onclick="changeDivision('advance','female','teen')">AFT</a></li>
-        <li><a href="#AMT" onclick="changeDivision('advance','male','teen')">AMT</a></li>
+        <li><a onclick="changeDivision('cLongFist','advance','female','adult')">AFA</a></li>
+        <li><a onclick="changeDivision('cLongFist','advance','male','adult')">AMA</a></li>
+        <li><a onclick="changeDivision('cLongFist','advance','female','child')">AFC</a></li>
+        <li><a onclick="changeDivision('cLongFist','advance','male','child')">AMC</a></li>
+        <li><a onclick="changeDivision('cLongFist','advance','female','teen')">AFT</a></li>
+        <li><a onclick="changeDivision('cLongFist','advance','male','teen')">AMT</a></li>
         <li class="divider"></li>
-        <li><a href="#BFA" onclick="changeDivision('beginner','female','adult')">BFA</a></li>
-        <li><a href="#BMA">BMA</a></li>
-        <li><a href="#BFC">BFC</a></li>
-        <li><a href="#BMC">BMC</a></li>
-        <li><a href="#BFT">BFT</a></li>
-        <li><a href="#BMT">BMT</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','female','adult')">IFA</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','male','adult')">IMA</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','female','child')">IFC</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','male','child')">IMC</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','female','teen')">IFT</a></li>
+        <li><a onclick="changeDivision('cLongFist','intermediate','male','teen')">IMT</a></li>
         <li class="divider"></li>
-        <li><a href="#IFA">IFA</a></li>
-        <li><a href="#IMA">IMA</a></li>
-        <li><a href="#IFC">IFC</a></li>
-        <li><a href="#IMC">IMC</a></li>
-        <li><a href="#IFT">IFT</a></li>
-        <li><a href="#IMT">IMT</a></li>
+        <li><a onclick="changeDivision('cLongFist','beginner','female','adult')">BFA</a></li>
+        <li><a onclick="changeDivision('cLongFist','beginner','male','adult')">BMA</a></li>
+        <li><a onclick="changeDivision('cLongFist','beginner','female','child')">BFC</a></li>
+        <li><a onclick="changeDivision('cLongFist','beginner','male','child')">BMC</a></li>
+        <li><a onclick="changeDivision('cLongFist','beginner','female','teen')">BFT</a></li>
+        <li><a onclick="changeDivision('cLongFist','beginner','male','teen')">BMT</a></li>
+
       </ul>
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
 <?php
-  echo "<li><a onclick='changeCompetitor(".$firstID.")'>".$firstFirstName." ".$firstLastName."</a></li>";
   if (mysqli_num_rows($resultAll) > 0) 
   {
       while($row = mysqli_fetch_assoc($resultAll)) 
@@ -196,9 +204,9 @@ if(isset($_REQUEST['submit'])) {
       echo "</ul>";
       echo "<br>";
 
-$retrieveFirst = "SELECT id, firstName, lastName, gender, birthDate, level FROM cLongFist WHERE id=$firstID";
-$resultFirst = mysqli_query($link, $retrieveFirst);
-      $row = mysqli_fetch_assoc($resultFirst);
+$retrieveCompetitor = "SELECT id, firstName, lastName, gender, birthDate, level FROM competitors WHERE id=".$_SESSION['id'];
+$result = mysqli_query($link, $retrieveCompetitor);
+      $row = mysqli_fetch_assoc($result);
       echo "<div id='competitorName'>";
       echo "<h2 class='header'>".$row['firstName']." ".$row['lastName']."</h2>";
       echo "</div>";
@@ -227,12 +235,16 @@ $resultFirst = mysqli_query($link, $retrieveFirst);
               <label for="score5">Score 5</label>
             </div>
           </div>
-<!--           <div class="row">
+          <div class="row">
+            <div class="input-field col s2">
+              <input id="deductions" name="deductions" type="text">
+              <label for="deductions">Deductions</label>
+          <div class="row">
             <div class="input-field col s12">
               <textarea id="notes1" class="materialize-textarea"></textarea>
               <label for="notes1">Notes on competitor</label>
             </div>
-          </div> -->
+          </div>
           <div class="row">
             <div class="input-field col s12">
               <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Submit</button>
