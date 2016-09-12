@@ -20,7 +20,7 @@ if (mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result)) {
     $_SESSION['id'] = $row['id'];
-    echo "<h2 id='competitorName' class='header'>".$row['firstName']." ".$row['lastName']." Session ID: ".$_SESSION['id']." Actual ID: ".$row['id']."</h2>";
+    echo "<h2 id='competitorName' class='header'>".$row['firstName']." ".$row['lastName']."</h2>";
     }
 }
 else

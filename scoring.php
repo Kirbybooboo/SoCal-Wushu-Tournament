@@ -14,7 +14,7 @@ $retrieveAll = "SELECT id, firstName, lastName, gender, birthDate, level from co
 $resultAll = mysqli_query($link, $retrieveAll);
 
 if(isset($_REQUEST['submit'])) {
-    $scores= array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
+    $scores = array($_POST['score1'], $_POST['score2'], $_POST['score3'], $_POST['score4'], $_POST['score5']);
     $deductions = $_POST['deductions'];
     $err = 0;
     if (!$_POST['score1'] || !$_POST['score2'] || !$_POST['score3'] || !$_POST['score4'] || !$_POST['score5']) 
@@ -27,13 +27,13 @@ if(isset($_REQUEST['submit'])) {
         $deductions = 0;
     }
     if (!$err) {
-        $insertScore="UPDATE competitors SET cLongFistScore1=$scores[0], cLongFistScore2=$scores[1], cLongFistScore3=$scores[2], cLongFistScore4=$scores[3], cLongFistScore5=$scores[4] WHERE id=".$_SESSION['id'];
+        $insertScore="UPDATE competitors SET ".$_SESSION['event']."Score1=$scores[0], ".$_SESSION['event']."Score2=$scores[1], ".$_SESSION['event']."Score3=$scores[2], ".$_SESSION['event']."Score4=$scores[3], ".$_SESSION['event']."Score5=$scores[4] WHERE id=".$_SESSION['id'];
         mysqli_query($link,$insertScore) or die(mysqli_error($link));
         sort($scores);
         array_pop($scores);
         array_shift($scores);
         $scoreTotal = (array_sum($scores)/count($scores)) - abs($deductions);
-        $insertScoreTotal="UPDATE competitors SET cLongFistScoreTotal=$scoreTotal where id=".$_SESSION['id'];
+        $insertScoreTotal="UPDATE competitors SET ".$_SESSION['event']."ScoreTotal=$scoreTotal where id=".$_SESSION['id'];
         mysqli_query($link,$insertScoreTotal) or die(mysql_error($link));
     }
 }
@@ -53,7 +53,7 @@ if(isset($_REQUEST['submit'])) {
   <header>
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
-        <a class="page-title" id="eventTitle">Long Fist</a>
+        <a class="page-title" id="eventTitle">No Event Selected</a>
       </div>
     </nav>
     <ul id="nav-mobile" class="side-nav fixed">
@@ -68,35 +68,35 @@ if(isset($_REQUEST['submit'])) {
             <a class="collapsible-header active waves-effect waves-pink">Contemporary</a>
             <div class="collapsible-body">
               <ul>
-                <li class="active">
-                  <a href="#" onclick="changeEventTitle('cLongFist')">Long Fist</a>
+                <li>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cLongFist');changeDivisionList()">Long Fist</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cSouthernFist')">Southern Fist</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cSouthernFist');changeDivisionList()">Southern Fist</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cBroadsword')">Broadsword</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cBroadsword');changeDivisionList()">Broadsword</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cStraightsword')">Straightsword</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cStraightsword');changeDivisionList()">Straightsword</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cSouthernBroadsword')">Southern Broadsword</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cSouthernBroadsword');changeDivisionList()">Southern Broadsword</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cStaff')">Staff</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cStaff');changeDivisionList()">Staff</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cSpear')">Spear</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cSpear');changeDivisionList()">Spear</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cSouthernStaff')">Southern Staff</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cSouthernStaff');changeDivisionList()">Southern Staff</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cOtherBarehand')">Other Barehand</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cOtherBarehand');changeDivisionList()">Other Barehand</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('cOtherWeapon')">Other Weapon</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('cOtherWeapon');changeDivisionList()">Other Weapon</a>
                 </li>
               </ul>
 
@@ -108,22 +108,22 @@ if(isset($_REQUEST['submit'])) {
 
               <ul>
                 <li>
-                  <a href="#" onclick="changeEventTitle('tNorthernFist')">Northern Fist</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('tNorthernFist');changeDivisionList()">Northern Fist</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('tSouthernFist')">Southern Fist</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('tSouthernFist');changeDivisionList()">Southern Fist</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('tShortWeapon')">Short Weapon</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('tShortWeapon');changeDivisionList()">Short Weapon</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('tLongWeapon')">Long Weapon</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('tLongWeapon');changeDivisionList()">Long Weapon</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('tOtherBarehand')">Other Barehand</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('tOtherBarehand');changeDivisionList()">Other Barehand</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('tOtherWeapon')">Other Weapon</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('tOtherWeapon');changeDivisionList()">Other Weapon</a>
                 </li>
               </ul>
 
@@ -135,13 +135,13 @@ if(isset($_REQUEST['submit'])) {
 
               <ul>
                 <li>
-                  <a href="#" onclick="changeEventTitle('chen')">Chen Style</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('chen');changeDivisionList()">Chen Style</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('yang')">Yang Style</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('yang');changeDivisionList()">Yang Style</a>
                 </li>
                 <li>
-                  <a href="#" onclick="changeEventTitle('taijiWeapon')">Taiji Weapon</a>
+                  <a class="waves-effect" href="#" onclick="changeEventTitle('taijiWeapon');changeDivisionList()">Taiji Weapon</a>
                 </li>
               </ul>
 
@@ -168,28 +168,29 @@ if(isset($_REQUEST['submit'])) {
     </div>
     <div class="container">
       <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Level/Gender/Age</a>
-      <ul id="dropdown1" class="dropdown-content">
-        <li><a onclick="changeDivision('cLongFist','advance','female','adult')">AFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','male','adult')">AMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','female','child')">AFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','male','child')">AMC</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','female','teen')">AFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','advance','male','teen')">AMT</a></li>
-        <li class="divider"></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','adult')">IFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','adult')">IMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','child')">IFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','child')">IMC</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','female','teen')">IFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','intermediate','male','teen')">IMT</a></li>
-        <li class="divider"></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','female','adult')">BFA</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','male','adult')">BMA</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','female','child')">BFC</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','male','child')">BMC</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','female','teen')">BFT</a></li>
-        <li><a onclick="changeDivision('cLongFist','beginner','male','teen')">BMT</a></li>
-
+      <ul id="dropdown1" class="dropdown-content" id="divisionList">
+<?php
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'advance','female','adult')\">AFA</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'advance','male','adult')\">AMA</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'advance','female','teen')\">AFT</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'advance','male','teen')\">AMT</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'advance','female','child')\">AFC</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'advance','male','child')\">AMC</a></li>";
+        echo "<li class=\"divider\"></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'intermediate','female','adult')\">IFA</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'intermediate','male','adult')\">IMA</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'intermediate','female','teen')\">IFT</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'intermediate','male','teen')\">IMT</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'intermediate','female','child')\">IFC</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'intermediate','male','child')\">IMC</a></li>";
+        echo "<li class=\"divider\"></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'beginner','female','adult')\">BFA</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'beginner','male','adult')\">BMA</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'beginner','female','teen')\">BFT</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'beginner','male','teen')\">BMT</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'beginner','female','child')\">BFC</a></li>";
+        echo "<li><a onclick=\"changeDivision(".$_SESSION['event'].",'beginner','male','child')\">BMC</a></li>";
+?>
       </ul>
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">

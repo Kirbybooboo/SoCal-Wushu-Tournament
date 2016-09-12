@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +10,8 @@
 <body>
 
 <?php
-$eventName = ($_GET['eventName']);
+$eventName = $_GET['eventName'];
+$_SESSION['event'] = $eventName;
 $eventName = str_replace("Fist", " Fist", $eventName);
 $eventName = str_replace("Weapon", " Weapon", $eventName);
 $eventName = str_replace("Barehand", " Barehand", $eventName);
