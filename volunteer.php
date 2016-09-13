@@ -175,7 +175,7 @@ if(isset($_REQUEST['submit']))
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>SoCal Wushu Tournament</h1>
-                        <h3>1st Annual Tournament - January 28, 2017</h3>
+                        <h3>1st Annual Tournament - February 18, 2017</h3>
                         <!--
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">

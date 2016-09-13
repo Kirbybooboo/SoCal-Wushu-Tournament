@@ -10,7 +10,7 @@ session_start();
 <body>
 
 <?php
-$event = ($_GET['event']);
+$eventId = ($_GET['eventId']);
 $level = ($_GET['level']);
 $gender = ($_GET['gender']);
 $age = ($_GET['age']);
@@ -19,18 +19,17 @@ $age = ($_GET['age']);
 $con = mysqli_connect('localhost','wushuclub','f4FreePhe') or die ("failed to connect to server !!");
 mysqli_select_db($con,"wushuclub");
 
-
 if (strcmp($age, "child") == 0)
 {
-	$sql="SELECT  id, firstName, lastName, gender, birthDate, level FROM `competitors` WHERE ".$event." = 1 AND level ='".$level."' AND gender ='".$gender."' AND birthDate > '2004-01-01'";
+	$sql="SELECT  id, firstName, lastName, gender, birthDate, level FROM `competitors` INNER JOIN `eventScoring` ON competitors.id = eventScoring.competitorId WHERE eventScoring.eventId = ".$eventId." AND level ='".$level."' AND gender ='".$gender."' AND birthDate > '2004-01-01'";
 }
 else if (strcmp($age, "teen") == 0)
 {
-	$sql="SELECT  id, firstName, lastName, gender, birthDate, level FROM `competitors` WHERE ".$event." = 1 AND level ='".$level."' AND gender ='".$gender."' AND birthDate between '1999-01-01' AND '2004-01-01'";
+	$sql="SELECT  id, firstName, lastName, gender, birthDate, level FROM `competitors` INNER JOIN `eventScoring` ON competitors.id = eventScoring.competitorId WHERE eventScoring.eventId = ".$eventId." AND level ='".$level."' AND gender ='".$gender."' AND birthDate BETWEEN '1999-01-01' AND '2004-01-01'";
 }
 else if (strcmp($age, "adult") == 0)
 {
-	$sql="SELECT  id, firstName, lastName, gender, birthDate, level FROM `competitors` WHERE ".$event." = 1 AND level ='".$level."' AND gender ='".$gender."' AND birthDate < '1999-01-01'";
+	$sql='SELECT id, firstName, lastName, gender, birthDate, level FROM competitors INNER JOIN eventScoring ON competitors.id = eventScoring.competitorId WHERE eventScoring.eventId = '.$eventId.' AND level ="'.$level.'" AND gender ="'.$gender.'" AND birthDate < "1999-01-01"';
 }
 
 $result = mysqli_query($con,$sql);

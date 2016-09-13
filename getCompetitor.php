@@ -19,7 +19,7 @@ $result = mysqli_query($con,$sql);
 if (mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result)) {
-    $_SESSION['id'] = $row['id'];
+    $_SESSION['competitorId'] = $row['id'];
     echo "<h2 id='competitorName' class='header'>".$row['firstName']." ".$row['lastName']."</h2>";
     }
 }

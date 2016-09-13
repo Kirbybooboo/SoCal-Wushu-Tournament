@@ -1,6 +1,6 @@
-function changeDivision(event, level, gender, age)
+function changeDivision(eventId, level, gender, age)
 {
-	$("#dropdown2").load("getDivision.php?event="+event+"&level="+level+"&gender="+gender+"&age="+age);
+	$("#dropdown2").load("getDivision.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
 }
 
 function changeCompetitor(id)
@@ -8,17 +8,22 @@ function changeCompetitor(id)
 	$("#competitorName").load("getCompetitor.php?id="+id);
 }
 
-function changeEventTitle(eventName)
+function changeEventTitle(id)
 {
-	$("#eventTitle").load("changeEventTitle.php?eventName="+eventName);
+	$("#eventTitle").load("changeEventTitle.php?id="+id);
 }
 
 function changeDivisionList()
 {
-	$("#divisionList").load("changeDivisionList.php");
+	$("#dropdown1").load("changeDivisionList.php");
 }
 
 function changeActiveNavBar(eventName, style)
 {
 	$("#navEvent").load("changeNavBar.php?eventName="+eventName+"&style="+style);
+}
+
+function abbreviateDivision(level, gender, age)
+{
+	$("#divisionButton").load("changeDivisionButton.php?level="+level+"&gender="+gender+"&age="+age);
 }

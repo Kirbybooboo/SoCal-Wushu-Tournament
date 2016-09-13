@@ -1,7 +1,6 @@
 <?php
 // Start the session
 session_start();
-
 include_once 'divisionList.php';
 ?>
 
@@ -12,7 +11,7 @@ include_once 'divisionList.php';
 <body>
 
 <?php
-changeDivisionListEventId();
+changeDivisionListButton($_GET['level'],$_GET['gender'],$_GET['age']);
 ?>
 </body>
 </html>

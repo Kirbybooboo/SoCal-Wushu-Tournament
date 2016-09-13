@@ -10,18 +10,16 @@ session_start();
 <body>
 
 <?php
-$eventName = $_GET['eventName'];
-$_SESSION['event'] = $eventName;
-$eventName = str_replace("Fist", " Fist", $eventName);
-$eventName = str_replace("Weapon", " Weapon", $eventName);
-$eventName = str_replace("Barehand", " Barehand", $eventName);
-$eventName = str_replace("SouthernStaff", "Southern Staff", $eventName);
-$eventName = str_replace("SouthernBroadsword", "Southern Broadsword", $eventName);
-$eventName = substr($eventName, 1);
-$eventName = str_replace("hen", "Chen Style", $eventName);
-$eventName = str_replace("ang", "Yang Style", $eventName);
-$eventName = str_replace("aiji Weapon", "Taiji Weapon", $eventName);
-echo $eventName;
+	$_SESSION['eventId'] = $_GET['id'];
+	$link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
+	mysqli_select_db($link,"wushuclub");
+	$sql = 'SELECT eventName FROM eventDefinition WHERE id='.$_SESSION['eventId'];
+	$result = mysqli_query($link, $sql);
+	while ($row = mysqli_fetch_assoc($result))
+	{
+		echo $row['eventName'];
+	}
+
 ?>
 </body>
 </html>
