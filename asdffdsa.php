@@ -274,7 +274,7 @@ if(isset($_REQUEST['submit'])) {
 
             <div class="control-group">
               <!-- Birthdate -->
-              <label class="control-label" for="birthDate">Birth Date</label>
+              <label class="control-label" for="birthDate">Birth Date (As of January 1, 2017: Child - Under 12, Teen - 13-17, Adult - 18+)</label>
               <div class="controls">
                 <select name="month">
                     <option selected="selected" value="00">--</option>

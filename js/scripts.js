@@ -18,12 +18,20 @@ function changeDivisionList()
 	$("#dropdown1").load("changeDivisionList.php");
 }
 
-function changeActiveNavBar(eventName, style)
-{
-	$("#navEvent").load("changeNavBar.php?eventName="+eventName+"&style="+style);
-}
-
 function abbreviateDivision(level, gender, age)
 {
 	$("#divisionButton").load("changeDivisionButton.php?level="+level+"&gender="+gender+"&age="+age);
+	Materialize.toast(level+"/"+gender+"/"+age, 4000);
+}
+
+function changeJudge(judge)
+{
+	$("#scoreForm").load("changeJudge.php?judgeId="+judge);
+	Materialize.toast('Now Judge '+judge, 4000);
+}
+
+function changeHeadJudge()
+{
+	$("#scoreForm").load("changeHeadJudge.php");
+	Materialize.toast('Now Head Judge', 4000)
 }

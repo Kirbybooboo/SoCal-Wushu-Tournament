@@ -20,12 +20,12 @@ if (mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result)) {
     $_SESSION['competitorId'] = $row['id'];
-    echo "<h2 id='competitorName' class='header'>".$row['firstName']." ".$row['lastName']."</h2>";
+    echo "<h1 id='competitorName' class='header'>".$row['firstName']." ".$row['lastName']."</h1>";
     }
 }
 else
 {
-    echo "<h2 id='competitorName' class='header'>Error, Can't find ID</h2>";
+    echo "<h1 id='competitorName' class='header'>Error, Can't find ID</h1>";
 }
 mysqli_close($con);
 ?>
