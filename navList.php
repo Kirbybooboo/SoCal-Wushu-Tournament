@@ -2,9 +2,12 @@
 
 include_once 'divisionList.php';
 
+
 function createSideNavElements($link)
 {
-	$link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
+	$user = 'wushuclub';
+	$password = 'f4FreePhe';
+	$link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 	mysqli_select_db($link,"wushuclub");
     $styles=array(STYLE_CONTEMPORARY, STYLE_TRADITIONAL, STYLE_INTERNAL);
     foreach($styles as $style)
@@ -25,7 +28,7 @@ function createSideNavElements($link)
 		$result = mysqli_query($link, $sql);
 		while ($row = mysqli_fetch_assoc($result))
 		{
-		echo '<li><a class="waves-effect" href="#" onclick="changeEventTitle('.$row['id'].');changeDivisionList();">'.$row['eventName'].'</a></li>';
+		echo '<li><a class="waves-effect" href="#" onclick="changeEventTitle('.$row['id'].');changeDivisionList();resetCompetitor();resetDivisionButton();resetCompetitorList();">'.$row['eventName'].'</a></li>';
 		}
 		echo '</ul></div></li>';
     }

@@ -14,7 +14,9 @@ CONST HEAD_JUDGE=5;
 
 function processForm($score, $judgeId)
 {
-    $link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
+    $user = 'wushuclub';
+    $password = 'f4FreePhe';
+    $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server from processForm!!");
     mysqli_select_db($link,"wushuclub");
 
     $scoreId = 'score'.strval($judgeId);
@@ -27,7 +29,10 @@ function processForm($score, $judgeId)
 
 function processHeadJudgeForm($deduction)
 {
-
+    $user = 'wushuclub';
+    $password = 'f4FreePhe';
+    $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server from processHeadJudgeForm!!");
+    mysqli_select_db($link,"wushuclub");
     $retrieveAllScores = 'SELECT score1, score2, score3, score4 FROM eventScoring WHERE competitorId = '.$_SESSION['competitorId'].' AND eventId = '.$_SESSION['eventId'];
     $result = mysqli_query($link, $retrieveAllScores);
     $row = mysqli_fetch_assoc($result);
@@ -35,9 +40,9 @@ function processHeadJudgeForm($deduction)
     sort($scores);
     array_pop($scores);
     array_shift($scores);
-    $scoreTotal = (array_sum($scores)/count($scores)) - abs($deductions);
-    $insertScoreTotal='UPDATE eventScoring SET scoreTotal='.$scoreTotal.' WHERE competitorId ='.$_SESSION['competitorId'].' AND eventId='.$_SESSION['eventId'];
-    mysqli_query($link,$insertScoreTotal) or die(mysql_error($link));
+    $scoreTotal = (array_sum($scores)/count($scores)) - abs($deduction);
+    $insertScoreTotal='UPDATE eventScoring SET scoreTotal= '.$scoreTotal.' WHERE competitorId = '.$_SESSION['competitorId'].' AND eventId='.$_SESSION['eventId'];
+    mysqli_query($link,$insertScoreTotal);
 
 }
 ?>

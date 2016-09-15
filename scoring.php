@@ -11,7 +11,9 @@ include_once 'navList.php';
 <html lang="en">
 
 <?php
-$link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
+$user = 'wushuclub';
+$password = 'f4FreePhe';
+$link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
 
 if(isset($_REQUEST['submit'])) {
@@ -135,11 +137,11 @@ if(isset($_REQUEST['submit'])) {
       $row = mysqli_fetch_assoc($result);
       if (mysqli_num_rows($result) > 0)
       {
-        echo "<div id='competitorName'><h1 class='header'>".$row['firstName']." ".$row['lastName']."</h1></div>";
+        echo "<h1 class='header' id='competitorName'>".$row['firstName']." ".$row['lastName']."</h1>";
       }
       else
       {
-        echo '<div id="competitorName"><h1 class="header">Competitor Name</h1></div>';
+        echo '<h1 class="header" id="competitorName">Competitor Name</h1>';
       }
 ?>
 

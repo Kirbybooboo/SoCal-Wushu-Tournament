@@ -3,9 +3,26 @@ function changeDivision(eventId, level, gender, age)
 	$("#dropdown2").load("getDivision.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
 }
 
+function resetCompetitorList()
+{
+	$("#dropdown2").load("resetCompetitorList.php");
+}
+
+function resetDivisionButton()
+{
+	$("#divisionButton").load("resetDivisionButton.php");
+}
+
+function resetCompetitor()
+{
+	$("#competitorName").load("resetCompetitor.php");
+	Materialize.toast("Filters Cleared", 4000);
+}
+
+
 function changeCompetitor(id)
 {
-	$("#competitorName").load("getCompetitor.php?id="+id);
+	$("#competitorName").load("changeCompetitor.php?id="+id);
 }
 
 function changeEventTitle(id)
@@ -34,4 +51,9 @@ function changeHeadJudge()
 {
 	$("#scoreForm").load("changeHeadJudge.php");
 	Materialize.toast('Now Head Judge', 4000)
+}
+
+function refreshTable()
+{
+	$("#tableBody").load("refreshTable.php");
 }

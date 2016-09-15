@@ -10,8 +10,10 @@ session_start();
 <body>
 
 <?php
-$id = htmlspecialchars($_GET['id']);
-$con = mysqli_connect('localhost','wushuclub','f4FreePhe') or die ("failed to connect to server !!");
+$user = 'wushuclub';
+$password = 'f4FreePhe';
+$id = ($_GET['id']);
+$con = mysqli_connect('localhost',$user,$password) or die ("failed to connect to server !!");
 mysqli_select_db($con,"wushuclub");
 
 $sql="SELECT  id, firstName, lastName, gender, birthDate, level FROM `competitors` WHERE id ='".$id."'";
@@ -20,12 +22,12 @@ if (mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result)) {
     $_SESSION['competitorId'] = $row['id'];
-    echo "<h1 id='competitorName' class='header'>".$row['firstName']." ".$row['lastName']."</h1>";
+    echo $row['firstName']." ".$row['lastName'];
     }
 }
 else
 {
-    echo "<h1 id='competitorName' class='header'>Error, Can't find ID</h1>";
+    echo "Error, Can't find ID";
 }
 mysqli_close($con);
 ?>

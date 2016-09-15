@@ -15,8 +15,9 @@ $level = ($_GET['level']);
 $gender = ($_GET['gender']);
 $age = ($_GET['age']);
 
-
-$con = mysqli_connect('localhost','wushuclub','f4FreePhe') or die ("failed to connect to server !!");
+$user = 'wushuclub';
+$password = 'f4FreePhe';
+$con = mysqli_connect('localhost',$user,$password) or die ("failed to connect to server !!");
 mysqli_select_db($con,"wushuclub");
 
 if (strcmp($age, "child") == 0)

@@ -15,6 +15,8 @@ const STYLE_CONTEMPORARY='Contemporary';
 const STYLE_TRADITIONAL='Traditional';
 const STYLE_INTERNAL='Internal';
 
+
+
 function changeDivisionListEventId()
 {
 	if ($_SESSION['eventId'])

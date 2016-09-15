@@ -2,7 +2,9 @@
 <html lang="en">
 
 <?php
-$link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
+$user = 'wushuclub';
+$password = 'f4FreePhe';
+$link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
 
 if(isset($_REQUEST['submit'])) {

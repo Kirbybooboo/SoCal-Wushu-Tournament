@@ -2,11 +2,18 @@
 // Start the session
 session_start();
 
-include_once 'processForm.php'
+include_once 'refreshTable.php';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
+<div class="row">
+<div class="input-field col s8">
+  <a class="waves-effect waves-light btn" onclick="refreshTable();">Refresh</a>
+</div>
+</div>
 
 <table class="striped">
 <thead>
@@ -16,21 +23,11 @@ include_once 'processForm.php'
   </tr>
 </thead>
 
-<tbody>
+<tbody id="tableBody">
 
 <?php 
-$_SESSION['judgeId'] = HEAD_JUDGE;
-$link = mysqli_connect("localhost","wushuclub","f4FreePhe")  or die ("failed to connect to server !!");
-mysqli_select_db($link,"wushuclub");
-    for ($judgeId = 1; $judgeId < HEAD_JUDGE; $judgeId++)
-    {
-        echo '<tr><td>Judge '.$judgeId.'</td><td>';
-        $scoreId = 'score'.$judgeId;
-        $sql = 'SELECT '.$scoreId.' FROM eventScoring WHERE competitorId = '.$_SESSION['competitorId'].' AND eventId = '.$_SESSION['eventId'];
-        $result = mysqli_query($link, $sql);
-        $row = mysqli_fetch_assoc($result);
-        echo $row[$scoreId].'</td></tr>';
-    }
+  $_SESSION['judgeId'] = HEAD_JUDGE;
+  refreshTable();
 ?>
 </tbody>
 </table>
@@ -38,7 +35,7 @@ mysqli_select_db($link,"wushuclub");
 <div class="row">
 <div class="input-field col s2">
   <input id="deduction" name="deduction" type="text">
-  <label for="deduction">Deduction</label>
+  <label for="deduction">Deduction (Use Decimal)</label>
 </div>
 </div>
 
