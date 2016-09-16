@@ -38,7 +38,7 @@ if (mysqli_num_rows($result) > 0)
 {
     while($row = mysqli_fetch_array($result))
     {
-    	echo "<li><a onclick='changeCompetitor(".$row['id'].");refreshTable();'>".$row['firstName']." ".$row['lastName']."</a></li>";
+    	echo "<li><a onclick='changeCompetitor(".$row['id'].");refreshTable();refreshFinalScore();'>".$row['firstName']." ".$row['lastName']."</a></li>";
     }
 }
 else

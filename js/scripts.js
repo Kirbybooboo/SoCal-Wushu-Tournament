@@ -41,6 +41,11 @@ function changeCompetitor(id)
 	$("#competitorName").load("changeCompetitor.php?id="+id);
 }
 
+function submitScore()
+{
+	$("#scoreForm").ajaxSubmit({url: 'server.php', type: 'post'})
+}
+
 function changeJudge(judge)
 {
 	$("#scoreForm").load("changeJudge.php?judgeId="+judge);
@@ -56,4 +61,9 @@ function changeHeadJudge()
 function refreshTable()
 {
 	$("#tableBody").load("refreshTable.php");
+}
+
+function refreshFinalScore()
+{
+	$("#totalScore").load("refreshFinalScore.php");
 }

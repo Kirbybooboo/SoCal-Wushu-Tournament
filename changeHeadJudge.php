@@ -11,7 +11,7 @@ include_once 'headJudgeFunctions.php';
 
 <div class="row">
 <div class="input-field col s8">
-  <a class="waves-effect waves-light btn" onclick="refreshTable();">Refresh</a>
+  <a class="waves-effect waves-light btn" onclick="refreshTable();refreshFinalScore();">Refresh</a>
 </div>
 </div>
 
@@ -28,6 +28,7 @@ include_once 'headJudgeFunctions.php';
 <?php 
   $_SESSION['judgeId'] = HEAD_JUDGE_ID;
   makeTable();
+  $totalScore = evaluateFinalScore();
 ?>
 </tbody>
 </table>
@@ -36,6 +37,11 @@ include_once 'headJudgeFunctions.php';
 <div class="input-field col s2">
   <input id="deduction" name="deduction" type="text">
   <label for="deduction">Deduction (Use Decimal)</label>
+</div>
+<div class="col s4 offset-s2">
+<?php 
+  echo '<h3 id="totalScore">Final Score: '.$totalScore.'</h3>';
+ ?>  
 </div>
 </div>
 
@@ -48,7 +54,9 @@ include_once 'headJudgeFunctions.php';
 </div>
 
 <script>
-$(document).ready(function(){
-$('.tooltipped').tooltip({delay: 50});
-}); 
+$(document).ready(function()
+{
+  $('.tooltipped').tooltip({delay: 50});
+});
+
 </script>
