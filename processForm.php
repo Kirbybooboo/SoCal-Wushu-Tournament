@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-include_once 'divisionList.php';
+include_once 'divisionFunctions.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include_once 'divisionList.php';
 
 <?php
 
-CONST HEAD_JUDGE=5;
+CONST HEAD_JUDGE_ID=5;
 
 function processForm($score, $judgeId)
 {

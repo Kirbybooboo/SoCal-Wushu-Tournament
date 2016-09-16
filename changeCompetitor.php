@@ -10,6 +10,7 @@ session_start();
 <body>
 
 <?php
+include_once 'processForm.php';
 $user = 'wushuclub';
 $password = 'f4FreePhe';
 $id = ($_GET['id']);

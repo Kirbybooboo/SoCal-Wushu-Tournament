@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-include_once 'divisionList.php';
+include_once 'divisionFunctions.php';
 include_once 'processForm.php';
 ?>
 

@@ -2,9 +2,9 @@
 // Start the session
 session_start();
 
-include_once 'divisionList.php';
+include_once 'divisionFunctions.php';
 include_once 'processForm.php';
-include_once 'navList.php';
+include_once 'navListFunctions.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ mysqli_select_db($link,"wushuclub");
 
 if(isset($_REQUEST['submit'])) {
     $err = 0;
-    if ($_SESSION['judgeId'] == HEAD_JUDGE)
+    if ($_SESSION['judgeId'] == HEAD_JUDGE_ID)
     {
       $deduction = $_POST['deduction'];
       if (!$_POST['deduction'])
@@ -99,7 +99,7 @@ if(isset($_REQUEST['submit'])) {
     <div class="container">
       <div class="row">
         <div class="col s12 m12 l12">
-          <ul class="tabs">
+          <ul class="tabs z-depth-1">
           <?php 
             if (!$_SESSION['judgeId'])
             {

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'divisionList.php';
+include_once 'divisionFunctions.php';
 
 
 function createSideNavElements($link)

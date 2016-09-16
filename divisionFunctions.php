@@ -10,7 +10,7 @@ const GENDER_MALE='male';
 const AGE_ADULT='adult';
 const AGE_TEEN='teen';
 const AGE_CHILD='child';
-
+	
 const STYLE_CONTEMPORARY='Contemporary';
 const STYLE_TRADITIONAL='Traditional';
 const STYLE_INTERNAL='Internal';

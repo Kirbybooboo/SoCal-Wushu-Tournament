@@ -1,5 +1,5 @@
 <?php 
-require_once 'divisionList.php';
+require_once 'divisionFunctions.php';
 
 class divisionListTests
 {

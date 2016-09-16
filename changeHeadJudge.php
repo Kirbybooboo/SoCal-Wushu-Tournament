@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-include_once 'refreshTable.php';
+include_once 'headJudgeFunctions.php';
 
 ?>
 
@@ -26,8 +26,8 @@ include_once 'refreshTable.php';
 <tbody id="tableBody">
 
 <?php 
-  $_SESSION['judgeId'] = HEAD_JUDGE;
-  refreshTable();
+  $_SESSION['judgeId'] = HEAD_JUDGE_ID;
+  makeTable();
 ?>
 </tbody>
 </table>
