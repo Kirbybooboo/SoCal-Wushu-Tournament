@@ -16,7 +16,7 @@ function processForm($score, $judgeId)
 {
     $user = 'wushuclub';
     $password = 'f4FreePhe';
-    $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server from processForm!!");
+    $link = mysqli_connect("localhost", $user, $password)  or die ("failed to connect to server from processForm!!");
     mysqli_select_db($link,"wushuclub");
 
     $scoreId = 'score'.strval($judgeId);

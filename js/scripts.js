@@ -43,7 +43,19 @@ function changeCompetitor(id)
 
 function submitScore()
 {
-	$("#scoreForm").ajaxSubmit({url: 'server.php', type: 'post'})
+	$("#scoreForm").submit(function(e)
+	{
+    $.ajax({
+           type: "POST",
+           url: "AJAXprocessForm.php",
+           data: $("#scoreForm").serialize(),
+           success: function(data)
+           {
+               $('#submitSuccess').openModal();
+           }
+         });
+    e.preventDefault();
+	});
 }
 
 function changeJudge(judge)
