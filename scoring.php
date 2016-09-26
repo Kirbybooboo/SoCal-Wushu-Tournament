@@ -79,11 +79,11 @@ mysqli_select_db($link,"wushuclub");
               $_SESSION['judgeId'] = 1;
             }
           ?>
-            <li class="tab col s3"><a href="#" onclick="changeJudge(1)">Judge 1</a></li>
-            <li class="tab col s3"><a href="#" onclick="changeJudge(2)">Judge 2</a></li>
-            <li class="tab col s3"><a href="#" onclick="changeJudge(3)">Judge 3</a></li>
-            <li class="tab col s3"><a href="#" onclick="changeJudge(4)">Judge 4</a></li>
-            <li class="tab col s3"><a href="#" onclick="changeHeadJudge()">Head Judge</a></li>
+            <li class="tab col s3"><a href="#" onclick="setJudge(1)">Judge 1</a></li>
+            <li class="tab col s3"><a href="#" onclick="setJudge(2)">Judge 2</a></li>
+            <li class="tab col s3"><a href="#" onclick="setJudge(3)">Judge 3</a></li>
+            <li class="tab col s3"><a href="#" onclick="setJudge(4)">Judge 4</a></li>
+            <li class="tab col s3"><a href="#" onclick="setHeadJudge()">Head Judge</a></li>
           </ul>
         </div>
       </div>
@@ -93,7 +93,7 @@ mysqli_select_db($link,"wushuclub");
       <ul id="dropdown1" class="dropdown-content">
 
 <?php
-      changeDivisionListEventId();
+      setDivisionListEventId();
 ?>
       </ul>
       <a class='dropdown-button btn' data-beloworigin="true" href="#" data-activates='dropdown2'>Competitor</a>

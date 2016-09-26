@@ -34,13 +34,17 @@ include_once 'headJudgeFunctions.php';
 </table>
 
 <div class="row">
-<div class="input-field col s3">
-  <input id="deduction" name="deduction" type="text">
-  <label for="deduction">Deduction (Use Decimal)</label>
-</div>
-<div class="col s4 offset-s2">
+    <div class="input-field col s2">
+      <input id="score" name="score" type="text">
+      <label for="score">Score</label>
+    </div>
+    <div class="input-field col s3">
+      <input id="deduction" name="deduction" type="text">
+      <label for="deduction">Deduction (Use Decimal)</label>
+    </div>
+<div class="col s4 offset-s1">
 <?php 
-  echo '<h3 id="totalScore">Final Score: '.$totalScore.'</h3>';
+  echo '<h1 id="totalScore">Final Score: '.$totalScore.'</h1>';
  ?>  
 </div>
 </div>

@@ -11,7 +11,7 @@ include_once 'divisionFunctions.php';
 <body>
 
 <?php
-changeDivisionListButton($_GET['level'],$_GET['gender'],$_GET['age']);
+setDivisionListButton($_GET['level'],$_GET['gender'],$_GET['age']);
 ?>
 </body>
 </html>

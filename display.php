@@ -65,7 +65,7 @@ mysqli_select_db($link,"wushuclub");
               $result = mysqli_query($link, $sql);
               while ($row = mysqli_fetch_assoc($result))
               {
-                echo '<li><a class="waves-effect" href="#" onclick="changeEventTitle('.$row['id'].');changeDivisionList()">'.$row['eventName'].'</a></li>';
+                echo '<li><a class="waves-effect" href="#" onclick="setEventTitle('.$row['id'].');setDivisionList()">'.$row['eventName'].'</a></li>';
               }
               echo '</ul></div></li>';
             }
@@ -83,7 +83,7 @@ mysqli_select_db($link,"wushuclub");
       <ul id="dropdown1" class="dropdown-content">
 
 <?php
-      changeDivisionListEventId();
+      setDivisionListEventId();
 ?>
       </ul>
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>

@@ -1,16 +1,16 @@
-function changeEventTitle(id)
+function setEventTitle(id)
 {
-	$("#eventTitle").load("changeEventTitle.php?id="+id);
+	$("#eventTitle").load("setEventTitle.php?id="+id);
 }
 
-function changeDivisionList()
+function setDivisionList()
 {
-	$("#dropdown1").load("changeDivisionList.php");
+	$("#dropdown1").load("setDivisionList.php");
 }
 
-function changeDivision(eventId, level, gender, age)
+function setDivision(eventId, level, gender, age)
 {
-	$("#dropdown2").load("changeCompetitorList.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
+	$("#dropdown2").load("setCompetitorList.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
 }
 
 function resetDivisionButton()
@@ -20,7 +20,7 @@ function resetDivisionButton()
 
 function abbreviateDivision(level, gender, age)
 {
-	$("#divisionButton").load("changeDivisionButton.php?level="+level+"&gender="+gender+"&age="+age);
+	$("#divisionButton").load("setDivisionButton.php?level="+level+"&gender="+gender+"&age="+age);
 	Materialize.toast(level+"/"+gender+"/"+age, 4000);
 }
 
@@ -36,9 +36,9 @@ function resetCompetitor()
 }
 
 
-function changeCompetitor(id)
+function setCompetitor(id)
 {
-	$("#competitorName").load("changeCompetitor.php?id="+id);
+	$("#competitorName").load("setCompetitor.php?id="+id);
 }
 
 function submitScore()
@@ -58,15 +58,15 @@ function submitScore()
 	});
 }
 
-function changeJudge(judge)
+function setJudge(judge)
 {
-	$("#scoreForm").load("changeJudge.php?judgeId="+judge);
+	$("#scoreForm").load("setJudge.php?judgeId="+judge);
 	Materialize.toast('Now Judge '+judge, 4000);
 }
 
-function changeHeadJudge()
+function setHeadJudge()
 {
-	$("#scoreForm").load("changeHeadJudge.php");
+	$("#scoreForm").load("setHeadJudge.php");
 	Materialize.toast('Now Head Judge', 4000)
 }
 

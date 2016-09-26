@@ -17,7 +17,7 @@ const STYLE_INTERNAL='Internal';
 
 
 
-function changeDivisionListEventId()
+function setDivisionListEventId()
 {
 	if ($_SESSION['eventId'])
 	{
@@ -31,7 +31,7 @@ function changeDivisionListEventId()
 		    foreach($ageList as $age)
 		    {
 		      $abbrev = abbreviateDivision($level,$gender,$age);
-		      echo '<li><a onclick="abbreviateDivision(\''.$level.'\',\''.$gender.'\',\''.$age.'\'); changeDivision('.$_SESSION['eventId'].',\''.$level.'\',\''.$gender.'\',\''.$age.'\')">'.$abbrev.'</a></li>';
+		      echo '<li><a onclick="abbreviateDivision(\''.$level.'\',\''.$gender.'\',\''.$age.'\'); setDivision('.$_SESSION['eventId'].',\''.$level.'\',\''.$gender.'\',\''.$age.'\')">'.$abbrev.'</a></li>';
 		    }
 		  }
 		  echo '<li class=\'divider\'></li>';
@@ -48,7 +48,7 @@ function abbreviateDivision($level, $gender, $age)
 	return strtoupper(substr($level,0,1)).strtoupper(substr($gender,0,1)).strtoupper(substr($age,0,1));
 }
 
-function changeDivisionListButton($level, $gender, $age)
+function setDivisionListButton($level, $gender, $age)
 {
 	$abbrev = abbreviateDivision($level, $gender, $age);
 	echo $abbrev;

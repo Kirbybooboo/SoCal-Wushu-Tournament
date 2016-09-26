@@ -12,7 +12,7 @@ include_once 'divisionFunctions.php';
 <body>
 
 <?php
-changeDivisionListEventId();
+setDivisionListEventId();
 ?>
 </body>
 </html>

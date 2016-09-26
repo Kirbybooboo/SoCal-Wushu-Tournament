@@ -28,7 +28,7 @@ function createSideNavElements($link)
 		$result = mysqli_query($link, $sql);
 		while ($row = mysqli_fetch_assoc($result))
 		{
-		echo '<li><a class="waves-effect" href="#" onclick="changeEventTitle('.$row['id'].');changeDivisionList();resetCompetitor();resetDivisionButton();resetCompetitorList();">'.$row['eventName'].'</a></li>';
+		echo '<li><a class="waves-effect" href="#" onclick="setEventTitle('.$row['id'].');setDivisionList();resetCompetitor();resetDivisionButton();resetCompetitorList();">'.$row['eventName'].'</a></li>';
 		}
 		echo '</ul></div></li>';
     }
