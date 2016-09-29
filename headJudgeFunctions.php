@@ -8,7 +8,7 @@ function makeTable()
 	$password = 'f4FreePhe';
 	$link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 	mysqli_select_db($link,"wushuclub");
-	    for ($judgeId = 1; $judgeId < HEAD_JUDGE_ID; $judgeId++)
+	    for ($judgeId = 1; $judgeId <= HEAD_JUDGE_ID; $judgeId++)
 	    {
 	        echo '<tr><td>Judge '.$judgeId.'</td><td>';
 	        $scoreId = 'score'.$judgeId;

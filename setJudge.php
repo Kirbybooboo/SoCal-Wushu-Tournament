@@ -18,7 +18,7 @@ $_SESSION['judgeId'] = $_GET['judgeId'];
   </div>
   <div class="row">
     <div class="input-field col s8">
-      <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit score to Head Judge" type="submit" name="submit" id="submit" onclick="submitScore()">Submit
+      <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit score to Head Judge" type="submit" name="submit" id="submit" onclick="submitScore(1)">Submit
       <i class="material-icons right">send</i>
       </button>
     </div>

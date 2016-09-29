@@ -4,9 +4,10 @@ $user = 'wushuclub';
 $password = 'f4FreePhe';
 $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
-
+	
+	$type = $_GET['type'];
 	$err = 0;
-	if ($_SESSION['judgeId'] == HEAD_JUDGE_ID)
+	if ($_SESSION['judgeId'] == HEAD_JUDGE_ID && $type == 0)
 	{
 	  $deduction = $_POST['deduction'];
 	  if (!$_POST['deduction'])

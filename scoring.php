@@ -79,11 +79,12 @@ mysqli_select_db($link,"wushuclub");
               $_SESSION['judgeId'] = 1;
             }
           ?>
-            <li class="tab col s3"><a href="#" onclick="setJudge(1)">Judge 1</a></li>
-            <li class="tab col s3"><a href="#" onclick="setJudge(2)">Judge 2</a></li>
-            <li class="tab col s3"><a href="#" onclick="setJudge(3)">Judge 3</a></li>
-            <li class="tab col s3"><a href="#" onclick="setJudge(4)">Judge 4</a></li>
-            <li class="tab col s3"><a href="#" onclick="setHeadJudge()">Head Judge</a></li>
+            <li class="tab col s2"><a href="#" onclick="setJudge(1)">Judge 1</a></li>
+            <li class="tab col s2"><a href="#" onclick="setJudge(2)">Judge 2</a></li>
+            <li class="tab col s2"><a href="#" onclick="setJudge(3)">Judge 3</a></li>
+            <li class="tab col s2"><a href="#" onclick="setJudge(4)">Judge 4</a></li>
+            <li class="tab col s2"><a href="#" onclick="setJudge(5)">Judge 5</a></li>
+            <li class="tab col s2"><a href="#" onclick="setHeadJudge()">Head Judge</a></li>
           </ul>
         </div>
       </div>

@@ -34,24 +34,20 @@ include_once 'headJudgeFunctions.php';
 </table>
 
 <div class="row">
-    <div class="input-field col s2">
-      <input id="score" name="score" type="text">
-      <label for="score">Score</label>
-    </div>
     <div class="input-field col s3">
       <input id="deduction" name="deduction" type="text">
       <label for="deduction">Deduction (Use Decimal)</label>
     </div>
 <div class="col s4 offset-s1">
 <?php 
-  echo '<h1 id="totalScore">Final Score: '.$totalScore.'</h1>';
+  echo '<h2 id="totalScore">Final Score: '.$totalScore.'</h2>';
  ?>  
 </div>
 </div>
 
 <div class="row">
 <div class="input-field col s8">
-  <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit Final Score" type="submit" name="submit" id="submit" onclick="submitScore()">Submit
+  <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit Final Score" type="submit" name="submit" id="submit" onclick="submitScore(0)">Submit
   <i class="material-icons right">send</i>
   </button>
 </div>

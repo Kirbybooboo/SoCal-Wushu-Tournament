@@ -41,13 +41,13 @@ function setCompetitor(id)
 	$("#competitorName").load("setCompetitor.php?id="+id);
 }
 
-function submitScore()
+function submitScore(type)
 {
 	$("#scoreForm").submit(function(e)
 	{
     $.ajax({
            type: "POST",
-           url: "AJAXprocessForm.php",
+           url: "AJAXprocessForm.php?type="+type,
            data: $("#scoreForm").serialize(),
            success: function(data)
            {
