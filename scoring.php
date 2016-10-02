@@ -24,11 +24,26 @@ mysqli_select_db($link,"wushuclub");
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-<!--   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
 </head>
 <body>
   <header>
 
+<!-- Dropdown Structure -->
+<?php 
+  if (!$_SESSION['judgeId'])
+  {
+    $_SESSION['judgeId'] = 1;
+  }
+?>
+    <ul id="judgeDropdown" class="dropdown-content">
+      <li><a href="#!" onclick="setJudge(1)">Judge 1</a></li>
+      <li><a href="#!" onclick="setJudge(2)">Judge 2</a></li>
+      <li><a href="#!" onclick="setJudge(3)">Judge 3</a></li>
+      <li><a href="#!" onclick="setJudge(4)">Judge 4</a></li>
+      <li><a href="#!" onclick="setJudge(5)">Judge 5</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" onclick="setHeadJudge()">Head Judge</a></li>
+    </ul>
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
       <?php
@@ -45,11 +60,16 @@ mysqli_select_db($link,"wushuclub");
             echo '<a class="page-title" id="eventTitle">'.$row['eventName'].'</a>';
           }
         }
-      ?> 
+      ?>
+      <ul class="right hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="#!" data-activates="judgeDropdown">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
       </div>
     </nav>
 
     <!-- Side Navigation Bar -->
+    
     <div class="sideNavBar">
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo">
@@ -73,36 +93,41 @@ mysqli_select_db($link,"wushuclub");
       <div class="row">
         <div class="col s12 m12 l12">
           <ul class="tabs z-depth-1">
-          <?php 
-            if (!$_SESSION['judgeId'])
-            {
-              $_SESSION['judgeId'] = 1;
-            }
-          ?>
-            <li class="tab col s2"><a href="#" onclick="setJudge(1)">Judge 1</a></li>
-            <li class="tab col s2"><a href="#" onclick="setJudge(2)">Judge 2</a></li>
-            <li class="tab col s2"><a href="#" onclick="setJudge(3)">Judge 3</a></li>
-            <li class="tab col s2"><a href="#" onclick="setJudge(4)">Judge 4</a></li>
-            <li class="tab col s2"><a href="#" onclick="setJudge(5)">Judge 5</a></li>
-            <li class="tab col s2"><a href="#" onclick="setHeadJudge()">Head Judge</a></li>
+            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Beginner</a></li>
+            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Intermediate</a></li>
+            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Advance</a></li>
           </ul>
         </div>
       </div>
-      <br>
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <ul class="tabs z-depth-1">
+            <li class="tab col s6"><a href="#" onclick="setJudge(1)">Female</a></li>
+            <li class="tab col s6"><a href="#" onclick="setJudge(2)">Male</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <ul class="tabs z-depth-1">
+            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Child</a></li>
+            <li class="tab col s4"><a href="#" onclick="setJudge(2)">Teen</a></li>
+            <li class="tab col s4"><a href="#" onclick="setJudge(3)">Adult</a></li>
+          </ul>
+        </div>
+      </div>
+<!--       <br>
       <br>
       <a class="dropdown-button btn tooltipped" data-position="top" data-delay="50" data-tooltip="Select Level/Gender/Age" data-beloworigin="true" href='#' data-activates='dropdown1' id='divisionButton'>Division</a>
       <ul id="dropdown1" class="dropdown-content">
 
 <?php
       setDivisionListEventId();
-?>
+?> -->
       </ul>
       <a class='dropdown-button btn' data-beloworigin="true" href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
-
-<?php
-      echo '<li><a>Empty</a></li>'; 
-?>
+        <li><a>Empty</a></li>
       </ul>
       <br>
 <?php
@@ -127,12 +152,12 @@ mysqli_select_db($link,"wushuclub");
               <label for="score">Score</label>
             </div>
           </div>
-          <div class="row">
+<!--           <div class="row">
             <div class="input-field col s8">
               <textarea id="notes1" class="materialize-textarea"></textarea>
               <label for="notes1">Notes on competitor</label>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="input-field col s8">
               <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit score to Head Judge" type="submit" name="submit" id="submit" onclick="submitScore()">Submit
