@@ -88,8 +88,6 @@ mysqli_select_db($link,"wushuclub");
       </ul>
       <a class='dropdown-button btn' href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
-
-
 <?php
       echo '<li><a>Empty</a></li>';
 ?>
@@ -99,7 +97,7 @@ mysqli_select_db($link,"wushuclub");
       $retrieveCompetitor = "SELECT firstName, lastName FROM competitors WHERE id=".$_SESSION['competitorId'];
       $result = mysqli_query($link, $retrieveCompetitor);
       $row = mysqli_fetch_assoc($result);
-      echo "<div id='competitorName'><h1 class='header'>".$row['firstName']." ".$row['lastName']."</h1></div>";
+      echo "<h1 class='header' id='competitorName'>".$row['firstName']." ".$row['lastName']."</h1>";
       $retrieveScore = 'SELECT scoreTotal FROM eventScoring WHERE competitorId='.$_SESSION['competitorId'].' AND eventId='.$_SESSION['eventId'];
       $result = mysqli_query($link, $retrieveScore);
       $row=mysqli_fetch_assoc($result);

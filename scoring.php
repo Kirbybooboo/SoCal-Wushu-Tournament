@@ -45,7 +45,7 @@ mysqli_select_db($link,"wushuclub");
             echo '<a class="page-title" id="eventTitle">'.$row['eventName'].'</a>';
           }
         }
-      ?>
+      ?> 
       </div>
     </nav>
 
@@ -101,7 +101,7 @@ mysqli_select_db($link,"wushuclub");
       <ul id="dropdown2" class="dropdown-content">
 
 <?php
-      echo '<li><a>Empty</a></li>';
+      echo '<li><a>Empty</a></li>'; 
 ?>
       </ul>
       <br>

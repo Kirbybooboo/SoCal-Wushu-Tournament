@@ -32,17 +32,18 @@ include_once 'headJudgeFunctions.php';
 ?>
 </tbody>
 </table>
-
+<br>
+<div class="chips chips-placeholder"></div>
 <div class="row">
-    <div class="input-field col s3">
-      <input id="deduction" name="deduction" type="text">
-      <label for="deduction">Deduction (Use Decimal)</label>
-    </div>
-<div class="col s4 offset-s1">
-<?php 
-  echo '<h2 id="totalScore">Final Score: '.$totalScore.'</h2>';
- ?>  
-</div>
+  <div class="input-field col s3">
+    <input id="deduction" name="deduction" type="text">
+    <label for="deduction">Deduction (Use Decimal)</label>
+  </div>
+  <div class="col s7 offset-s1">
+  <?php 
+    echo '<h2 id="totalScore">Final Score: '.$totalScore.'</h2>';
+   ?>  
+  </div>
 </div>
 
 <div class="row">
@@ -57,6 +58,10 @@ include_once 'headJudgeFunctions.php';
 $(document).ready(function()
 {
   $('.tooltipped').tooltip({delay: 50});
+  $('.chips-placeholder').material_chip({
+    placeholder: 'Enter deduction code',
+    secondaryPlaceholder: '+Deduction Code',
+  });
 });
 
 </script>
