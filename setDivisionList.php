@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-include_once 'divisionFunctions.php';
+include_once 'navListFunctions.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ include_once 'divisionFunctions.php';
 <body>
 
 <?php
-setDivisionListEventId();
+getSideNavDivisions();
 ?>
 </body>
 </html>

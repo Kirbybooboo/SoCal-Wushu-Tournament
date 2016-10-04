@@ -3,19 +3,14 @@ function setEventTitle(id)
 	$("#eventTitle").load("setEventTitle.php?id="+id);
 }
 
-function setDivisionList()
+function getSideNavDivisions()
 {
-	$("#dropdown1").load("setDivisionList.php");
+	$("#sideNavDivisions").load("setDivisionList.php");
 }
 
 function setDivision(eventId, level, gender, age)
 {
 	$("#dropdown2").load("setCompetitorList.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
-}
-
-function resetDivisionButton()
-{
-	$("#divisionButton").load("resetDivisionButton.php");
 }
 
 function abbreviateDivision(level, gender, age)
@@ -32,7 +27,6 @@ function resetCompetitorList()
 function resetCompetitor()
 {
 	$("#competitorName").load("resetCompetitor.php");
-	Materialize.toast("Filters Cleared", 4000);
 }
 
 

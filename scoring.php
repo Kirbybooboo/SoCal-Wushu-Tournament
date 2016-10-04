@@ -28,7 +28,7 @@ mysqli_select_db($link,"wushuclub");
 <body>
   <header>
 
-<!-- Dropdown Structure -->
+<!-- Judge Dropdown Structure -->
 <?php 
   if (!$_SESSION['judgeId'])
   {
@@ -44,6 +44,7 @@ mysqli_select_db($link,"wushuclub");
       <li class="divider"></li>
       <li><a href="#!" onclick="setHeadJudge()">Head Judge</a></li>
     </ul>
+<!-- Top Navigation Bar -->
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
       <?php
@@ -62,14 +63,12 @@ mysqli_select_db($link,"wushuclub");
         }
       ?>
       <ul class="right hide-on-med-and-down">
-      <!-- Dropdown Trigger -->
+<!-- Dropdown Trigger -->
       <li><a class="dropdown-button" href="#!" data-activates="judgeDropdown">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
       </div>
     </nav>
-
-    <!-- Side Navigation Bar -->
-    
+<!-- Events Side Nav-->
     <div class="sideNavBar">
       <ul id="nav-mobile" class="side-nav fixed">
         <li class="logo">
@@ -80,51 +79,37 @@ mysqli_select_db($link,"wushuclub");
         <li class="no-padding">
           <ul id="navEvent" class="collapsible collapsible-accordian">
             <?php
-              createSideNavElements();
+              getSideNavEvents();
             ?>
           </ul>
         </li>
       </ul>
     </div>
   </header>
-
   <main>
+<!-- Division Side Nav -->
+      <ul id="slide-out" class="side-nav">  
+      <li class="logo">
+        <a id="logo-container" class="brand-logo" style="height: 144px">
+            <img class="responsive-img" src="img/front-logo.png">
+        </a>
+      </li>
+      <li class="no-padding">
+        <ul id="sideNavDivisions" class="collapsible collapsible-accordian">
+          <?php
+            getSideNavDivisions();
+          ?>
+        </ul>
+      </li>
+    </ul>
     <div class="container">
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <ul class="tabs z-depth-1">
-            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Beginner</a></li>
-            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Intermediate</a></li>
-            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Advance</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <ul class="tabs z-depth-1">
-            <li class="tab col s6"><a href="#" onclick="setJudge(1)">Female</a></li>
-            <li class="tab col s6"><a href="#" onclick="setJudge(2)">Male</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <ul class="tabs z-depth-1">
-            <li class="tab col s4"><a href="#" onclick="setJudge(1)">Child</a></li>
-            <li class="tab col s4"><a href="#" onclick="setJudge(2)">Teen</a></li>
-            <li class="tab col s4"><a href="#" onclick="setJudge(3)">Adult</a></li>
-          </ul>
-        </div>
-      </div>
-<!--       <br>
       <br>
-      <a class="dropdown-button btn tooltipped" data-position="top" data-delay="50" data-tooltip="Select Level/Gender/Age" data-beloworigin="true" href='#' data-activates='dropdown1' id='divisionButton'>Division</a>
-      <ul id="dropdown1" class="dropdown-content">
-
-<?php
+      <br>
+<!-- <?php
       setDivisionListEventId();
-?> -->
-      </ul>
+?>
+      </ul> -->
+<!-- Competitor List -->
       <a class='dropdown-button btn' data-beloworigin="true" href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
         <li><a>Empty</a></li>
@@ -143,7 +128,7 @@ mysqli_select_db($link,"wushuclub");
         echo '<h1 class="header" id="competitorName">Competitor Name</h1>';
       }
 ?>
-
+<!-- Competitor Score Form -->
       <div class="row">
         <form class="col s12" action='' method="POST" id="scoreForm">
           <div class="row">
@@ -183,6 +168,7 @@ mysqli_select_db($link,"wushuclub");
   <script src="js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
+  <script>$(".button-collapse").sideNav({closeOnClick: true});</script>
 
   </body>
 </html>

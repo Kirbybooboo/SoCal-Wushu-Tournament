@@ -3,7 +3,7 @@
 include_once 'divisionFunctions.php';
 
 
-function createSideNavElements($link)
+function getSideNavEvents()
 {
 	$user = 'wushuclub';
 	$password = 'f4FreePhe';
@@ -28,9 +28,33 @@ function createSideNavElements($link)
 		$result = mysqli_query($link, $sql);
 		while ($row = mysqli_fetch_assoc($result))
 		{
-		echo '<li><a class="waves-effect" href="#" onclick="setEventTitle('.$row['id'].');setDivisionList();resetCompetitor();resetDivisionButton();resetCompetitorList();">'.$row['eventName'].'</a></li>';
+		echo '<li><a class="waves-effect button-collapse" href="#" data-activates="slide-out" onclick="setEventTitle('.$row['id'].');getSideNavDivisions();resetCompetitor();resetCompetitorList();">'.$row['eventName'].'</a></li>';
 		}
 		echo '</ul></div></li>';
     }
 }
+
+function getSideNavDivisions()
+{
+	$levels = array(LEVEL_BEGINNER, LEVEL_INTERMEDIATE, LEVEL_ADVANCE);
+	$genders = array(GENDER_FEMALE, GENDER_MALE);
+	$ages = array(AGE_CHILD, AGE_TEEN, AGE_ADULT);
+	$user = 'wushuclub';
+	$password = 'f4FreePhe';
+	$link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
+	mysqli_select_db($link,"wushuclub");
+	foreach($levels as $level)
+	{
+		echo '<li class="bold"><a class="collapsible-header waves-effect waves-pink">'.ucfirst($level).'</a><div class="collapsible-body"><ul>';
+		$sql = 'SELECT * FROM `divisionDefinition` WHERE `level` = "'.$level.'"';
+		$result = mysqli_query($link, $sql);
+		while ($row = mysqli_fetch_assoc($result))
+		{
+			echo '<li><a class="waves-effect" href="#" onclick="setDivision('.$_SESSION['eventId'].',\''.$row['level'].'\',\''.$row['gender'].'\',\''.$row['age'].'\')">'.$row['abbrev'].'</a></li>';
+		}
+		echo '</ul></div></li>';
+	}
+
+	
+}	
 ?>
