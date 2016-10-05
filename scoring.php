@@ -27,8 +27,6 @@ mysqli_select_db($link,"wushuclub");
 </head>
 <body>
   <header>
-
-<!-- Judge Dropdown Structure -->
 <?php 
   if (!$_SESSION['judgeId'])
   {
@@ -53,8 +51,8 @@ mysqli_select_db($link,"wushuclub");
           }
         }
       ?>
+<!-- Judge Dropdown -->
         <ul class="right hide-on-med-and-down">
-<!-- Dropdown Trigger -->
         <ul id="judgeDropdown" class="dropdown-content">
           <li><a href="#!" onclick="setJudge(1);setJudgeDropdownTitle(1);">Judge 1</a></li>
           <li><a href="#!" onclick="setJudge(2);setJudgeDropdownTitle(2);">Judge 2</a></li>
@@ -64,7 +62,17 @@ mysqli_select_db($link,"wushuclub");
           <li class="divider"></li>
           <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
         </ul>
-          <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 24px;margin-top: 24px;">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 16px;margin-top: 24px;">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+<!-- Competitor Dropdown -->
+        <ul class="right hide-on-med-and-down">
+          <ul id="competitorDropdown" class="dropdown-content">
+            <li><a href="#!">Empty</a></li>
+          </ul>
+          <li><a class='dropdown-button' data-beloworigin="true" href="#" data-activates='competitorDropdown' style="font-size: 16px;margin-top: 24px;">Competitor<i class="material-icons right">arrow_drop_down</i></a></li>
+          <ul id="dropdown2" class="dropdown-content">
+            <li><a>Empty</a></li>
+          </ul>
         </ul>
       </div>
     </nav>
@@ -104,17 +112,17 @@ mysqli_select_db($link,"wushuclub");
     </ul>
     <div class="container">
       <br>
-      <br>
+<!--       <br> -->
 <!-- <?php
       setDivisionListEventId();
 ?>
       </ul> -->
 <!-- Competitor List -->
-      <a class='dropdown-button btn' data-beloworigin="true" href="#" data-activates='dropdown2'>Competitor</a>
+<!--       <a class='dropdown-button btn' data-beloworigin="true" href="#" data-activates='dropdown2'>Competitor</a>
       <ul id="dropdown2" class="dropdown-content">
         <li><a>Empty</a></li>
       </ul>
-      <br>
+      <br> -->
 <?php
       $retrieveCompetitor = "SELECT id, firstName, lastName, gender, birthDate, level FROM competitors WHERE id=".$_SESSION['competitorId'];
       $result = mysqli_query($link, $retrieveCompetitor);
@@ -162,7 +170,7 @@ mysqli_select_db($link,"wushuclub");
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
           </div>
         </div>
-      </div>      
+      </div>   
 
     </div>
   </main>

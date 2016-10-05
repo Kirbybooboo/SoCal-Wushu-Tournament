@@ -10,7 +10,7 @@ function getSideNavDivisions()
 
 function setDivision(eventId, level, gender, age)
 {
-	$("#dropdown2").load("setCompetitorList.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
+	$("#competitorDropdown").load("setCompetitorList.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
 }
 
 function abbreviateDivision(level, gender, age)
@@ -21,7 +21,7 @@ function abbreviateDivision(level, gender, age)
 
 function resetCompetitorList()
 {
-	$("#dropdown2").load("resetCompetitorList.php");
+	$("#competitorDropdown").load("resetCompetitorList.php");
 }
 
 function resetCompetitor()
