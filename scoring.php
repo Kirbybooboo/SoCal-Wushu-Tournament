@@ -53,16 +53,16 @@ mysqli_select_db($link,"wushuclub");
       ?>
 <!-- Judge Dropdown -->
         <ul class="right hide-on-med-and-down">
-        <ul id="judgeDropdown" class="dropdown-content">
+          <ul id="judgeDropdown" class="dropdown-content">
 <?php
-          for ($i = 1; $i <= 5; $i++)
-          {
-            echo '<li><a href="#!" onclick="setJudge('.$i.');setJudgeDropdownTitle('.$i.');">Judge '.$i.'</a></li>';
-          }
+            for ($i = 1; $i <= 5; $i++)
+            {
+              echo '<li><a href="#!" onclick="setJudge('.$i.');setJudgeDropdownTitle('.$i.');">Judge '.$i.'</a></li>';
+            }
 ?>
-          <li class="divider"></li>
-          <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
-        </ul>
+            <li class="divider"></li>
+            <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
+          </ul>
           <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 16px;margin-top: 24px;">Judge 1<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
 <!-- Competitor Dropdown -->
@@ -71,9 +71,6 @@ mysqli_select_db($link,"wushuclub");
             <li><a href="#!">Empty</a></li>
           </ul>
           <li><a class='dropdown-button' data-beloworigin="true" href="#" data-activates='competitorDropdown' style="font-size: 16px;margin-top: 24px;">Competitor<i class="material-icons right">arrow_drop_down</i></a></li>
-          <ul id="dropdown2" class="dropdown-content">
-            <li><a>Empty</a></li>
-          </ul>
         </ul>
       </div>
     </nav>

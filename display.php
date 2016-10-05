@@ -50,9 +50,6 @@ mysqli_select_db($link,"wushuclub");
             <li><a href="#!">Empty</a></li>
           </ul>
           <li><a class='dropdown-button' data-beloworigin="true" href="#" data-activates='competitorDropdown' style="font-size: 16px;margin-top: 24px;">Competitor<i class="material-icons right">arrow_drop_down</i></a></li>
-          <ul id="dropdown2" class="dropdown-content">
-            <li><a>Empty</a></li>
-          </ul>
         </ul>
       </div>
     </nav>
