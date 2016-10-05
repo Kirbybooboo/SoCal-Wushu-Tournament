@@ -58,6 +58,11 @@ function setJudge(judge)
 	Materialize.toast('Now Judge '+judge, 4000);
 }
 
+function setJudgeDropdownTitle(judge)
+{
+	$("#judgeDropdownTitle").load("setJudgeDropDownTitle.php?judge="+judge);
+}
+
 function setHeadJudge()
 {
 	$("#scoreForm").load("setHeadJudge.php");

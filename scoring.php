@@ -35,15 +35,6 @@ mysqli_select_db($link,"wushuclub");
     $_SESSION['judgeId'] = 1;
   }
 ?>
-    <ul id="judgeDropdown" class="dropdown-content">
-      <li><a href="#!" onclick="setJudge(1)">Judge 1</a></li>
-      <li><a href="#!" onclick="setJudge(2)">Judge 2</a></li>
-      <li><a href="#!" onclick="setJudge(3)">Judge 3</a></li>
-      <li><a href="#!" onclick="setJudge(4)">Judge 4</a></li>
-      <li><a href="#!" onclick="setJudge(5)">Judge 5</a></li>
-      <li class="divider"></li>
-      <li><a href="#!" onclick="setHeadJudge()">Head Judge</a></li>
-    </ul>
 <!-- Top Navigation Bar -->
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
@@ -62,10 +53,19 @@ mysqli_select_db($link,"wushuclub");
           }
         }
       ?>
-      <ul class="right hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down">
 <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="judgeDropdown">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
-    </ul>
+        <ul id="judgeDropdown" class="dropdown-content">
+          <li><a href="#!" onclick="setJudge(1);setJudgeDropdownTitle(1);">Judge 1</a></li>
+          <li><a href="#!" onclick="setJudge(2);setJudgeDropdownTitle(2);">Judge 2</a></li>
+          <li><a href="#!" onclick="setJudge(3);setJudgeDropdownTitle(3);">Judge 3</a></li>
+          <li><a href="#!" onclick="setJudge(4);setJudgeDropdownTitle(4);">Judge 4</a></li>
+          <li><a href="#!" onclick="setJudge(5);setJudgeDropdownTitle(5);">Judge 5</a></li>
+          <li class="divider"></li>
+          <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
+        </ul>
+          <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 24px;margin-top: 24px;">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
       </div>
     </nav>
 <!-- Events Side Nav-->
@@ -137,12 +137,12 @@ mysqli_select_db($link,"wushuclub");
               <label for="score">Score</label>
             </div>
           </div>
-<!--           <div class="row">
+          <div class="row">
             <div class="input-field col s8">
               <textarea id="notes1" class="materialize-textarea"></textarea>
               <label for="notes1">Notes on competitor</label>
             </div>
-          </div> -->
+          </div>
           <div class="row">
             <div class="input-field col s8">
               <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit score to Head Judge" type="submit" name="submit" id="submit" onclick="submitScore()">Submit
@@ -153,12 +153,14 @@ mysqli_select_db($link,"wushuclub");
         </form>
       </div>
 
-      <div id="submitSuccess" class="modal">
-        <div class="modal-content">
-          <h4>Score Submitted</h4>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <div class="container">
+        <div id="submitSuccess" class="modal">
+          <div class="modal-content">
+            <h4>Score Submitted</h4>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
         </div>
       </div>      
 
