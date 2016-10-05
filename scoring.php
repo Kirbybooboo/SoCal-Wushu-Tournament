@@ -62,7 +62,7 @@ mysqli_select_db($link,"wushuclub");
           <li class="divider"></li>
           <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
         </ul>
-          <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 16px;margin-top: 24px;">Judge<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 16px;margin-top: 24px;">Judge 1<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
 <!-- Competitor Dropdown -->
         <ul class="right hide-on-med-and-down">
