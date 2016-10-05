@@ -50,7 +50,7 @@ function getSideNavDivisions()
 		$result = mysqli_query($link, $sql);
 		while ($row = mysqli_fetch_assoc($result))
 		{
-			echo '<li><a class="waves-effect" href="#" onclick="setDivision('.$_SESSION['eventId'].',\''.$row['level'].'\',\''.$row['gender'].'\',\''.$row['age'].'\')">'.$row['abbrev'].'</a></li>';
+			echo '<li><a class="waves-effect" href="#" onclick="setDivision('.$_SESSION['eventId'].',\''.$row['level'].'\',\''.$row['gender'].'\',\''.$row['age'].'\')">'.ucfirst($row['gender']).' '.ucfirst($row['age']).'</a></li>';
 		}
 		echo '</ul></div></li>';
 	}
