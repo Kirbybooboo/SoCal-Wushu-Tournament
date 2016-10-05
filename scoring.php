@@ -54,11 +54,12 @@ mysqli_select_db($link,"wushuclub");
 <!-- Judge Dropdown -->
         <ul class="right hide-on-med-and-down">
         <ul id="judgeDropdown" class="dropdown-content">
-          <li><a href="#!" onclick="setJudge(1);setJudgeDropdownTitle(1);">Judge 1</a></li>
-          <li><a href="#!" onclick="setJudge(2);setJudgeDropdownTitle(2);">Judge 2</a></li>
-          <li><a href="#!" onclick="setJudge(3);setJudgeDropdownTitle(3);">Judge 3</a></li>
-          <li><a href="#!" onclick="setJudge(4);setJudgeDropdownTitle(4);">Judge 4</a></li>
-          <li><a href="#!" onclick="setJudge(5);setJudgeDropdownTitle(5);">Judge 5</a></li>
+<?php
+          for ($i = 1; $i <= 5; $i++)
+          {
+            echo '<li><a href="#!" onclick="setJudge('.$i.');setJudgeDropdownTitle('.$i.');">Judge '.$i.'</a></li>';
+          }
+?>
           <li class="divider"></li>
           <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
         </ul>
@@ -112,17 +113,7 @@ mysqli_select_db($link,"wushuclub");
     </ul>
     <div class="container">
       <br>
-<!--       <br> -->
-<!-- <?php
-      setDivisionListEventId();
-?>
-      </ul> -->
-<!-- Competitor List -->
-<!--       <a class='dropdown-button btn' data-beloworigin="true" href="#" data-activates='dropdown2'>Competitor</a>
-      <ul id="dropdown2" class="dropdown-content">
-        <li><a>Empty</a></li>
-      </ul>
-      <br> -->
+
 <?php
       $retrieveCompetitor = "SELECT id, firstName, lastName, gender, birthDate, level FROM competitors WHERE id=".$_SESSION['competitorId'];
       $result = mysqli_query($link, $retrieveCompetitor);

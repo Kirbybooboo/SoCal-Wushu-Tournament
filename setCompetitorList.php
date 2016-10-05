@@ -1,15 +1,7 @@
 <?php
 // Start the session
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-
-<?php
 $eventId = ($_GET['eventId']);
 $level = ($_GET['level']);
 $gender = ($_GET['gender']);
@@ -47,5 +39,3 @@ else
 }
 mysqli_close($con);
 ?>
-</body>
-</html>

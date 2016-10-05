@@ -8,15 +8,9 @@ function getSideNavDivisions()
 	$("#sideNavDivisions").load("setDivisionList.php");
 }
 
-function setDivision(eventId, level, gender, age)
+function setCompetitorList(eventId, level, gender, age)
 {
 	$("#competitorDropdown").load("setCompetitorList.php?eventId="+eventId+"&level="+level+"&gender="+gender+"&age="+age);
-}
-
-function abbreviateDivision(level, gender, age)
-{
-	$("#divisionButton").load("setDivisionButton.php?level="+level+"&gender="+gender+"&age="+age);
-	Materialize.toast(level+"/"+gender+"/"+age, 4000);
 }
 
 function resetCompetitorList()

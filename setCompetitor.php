@@ -1,15 +1,7 @@
 <?php
 // Start the session
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-
-<?php
 include_once 'processForm.php';
 $user = 'wushuclub';
 $password = 'f4FreePhe';
@@ -32,5 +24,3 @@ else
 }
 mysqli_close($con);
 ?>
-</body>
-</html>
