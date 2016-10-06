@@ -81,7 +81,7 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>SoCal Wushu Tournament</h1>
-                        <h3>1st Annual Tournament - February 18, 2017</h3>
+                        <h3>1st Annual Tournament - February 19, 2017</h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
@@ -113,10 +113,10 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Venue</h2>
-                    <p class="lead">The SoCal Wushu Tournament will be held at the Anteater Recreation Center near the UCI campus.</p>
+                    <p class="lead">The SoCal Wushu Tournament will be held at the Bren Event Center near the UCI campus.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/uciarc.jpg" alt="">
+                    <img class="img-responsive" src="img/breneventcenter.jpg" alt="">
                 </div>
             </div>
 
@@ -134,7 +134,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Admission</h2>
-                    <p class="lead">Spectators can enter for free!</p>
+                    <p class="lead">Spectators Ticket Price TBA</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <!-- <img class="img-responsive" src="img/abouttournament.jpg" alt=""> -->
@@ -155,14 +155,18 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Parking</h2>
-                    <p class="lead">UCI Students, ARC Members, and visitors can park in the ARC parking lot or in the East Campus Parking Structure. To park in both the ARC Parking lot and the East Campus Parking structure you must purchase a parking day pass if you do not have a UCI parking permit. Hourly permits purchased from the ticket dispenser in the ARC parking lot are valid in the ARC Parking lot and white spaces in the East Campus Parking structure.
+                    <p class="lead">Partial and full day permits may be purchased at the main kiosk at the Mesa Parking Structure or at the parking kiosk located at the intersection of West Peltason and Campus Drive, also known as Bridge and Campus Drive.
 
-Those with a UCI permit may park in all unmarked spaces in the parking structure. Parking Prices (ARC Lot dispenser): 1 hour = $2, Daily = $10. If any cars are parked in illegal locations, they will be ticketed and towed so please abide by all University policies.
+Daily Permits: $10.00
 
-Vehicle owners are responsible for all parking fines.</p>
+Once a permit is acquired, participants should park at the Mesa Parking Structure. Please refer to the camp confirmation sent to each camper for the location of the check-in table for that camp session.
+
+ 
+
+Purchasing permits for parking is the responsibility of the camp participant.  Those who do not comply with the Transportation Services guidelines are subject to citation. The Camps Office does not accept responsibility for citations which fall outside these parameters.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:480px;width:600px;'><div id='gmap_canvas' style='height:480px;width:600px;'></div><div><small><a href=""></a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(33.6451628,-117.82819819999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.6451628,-117.82819819999997)});infowindow = new google.maps.InfoWindow({content:'<strong>Anteater Recreation Center</strong><br>670 California Ave, Irvine, CA 92617<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:360px;width:480px;"><div id="gmap_canvas" style="height:500px;width:600px;"><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="http://www.themecircle.net" id="get-map-data">themecircle</a></div></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:15,center:new google.maps.LatLng(33.6494111,-117.8469637),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(33.6494111, -117.8469637)});infowindow = new google.maps.InfoWindow({content:"<b>Bren Event Center</b><br/>100 Mesa Rd, Irvine, CA 92697<br/> New York" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
                 </div>
             </div>
 
