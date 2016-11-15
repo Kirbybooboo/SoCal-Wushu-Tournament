@@ -1,4 +1,4 @@
 <?php 
-include_once 'headJudgeFunctions.php';
+include_once 'scoringFunctions.php';
 makeTable();
  ?>

@@ -8469,6 +8469,14 @@ header, footer, main {
   padding-left:300px;
 }
 
+h1.displayName {
+  font-size: 6.2rem;
+}
+
+h1.score {
+  font-size: 6.2rem;
+}
+
 a.page-title {
   line-height: 122px;
   font-size: 48px;

@@ -2,14 +2,11 @@
 // Start the session
 session_start();
 
-include_once 'divisionFunctions.php';
-include_once 'processForm.php';
-include_once 'navListFunctions.php';
+include_once 'scoringFunctions.php';
 $user = 'wushuclub';
 $password = 'f4FreePhe';
 $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
-
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +23,7 @@ mysqli_select_db($link,"wushuclub");
 </head>
 <body>
   <header>
+
 <!-- Top Navigation Bar -->
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
@@ -44,6 +42,7 @@ mysqli_select_db($link,"wushuclub");
           }
         }
       ?>
+
 <!-- Competitor Dropdown -->
         <ul class="right hide-on-med-and-down">
           <ul id="competitorDropdown" class="dropdown-content">
@@ -53,6 +52,7 @@ mysqli_select_db($link,"wushuclub");
         </ul>
       </div>
     </nav>
+
 <!-- Events Side Nav-->
     <div class="sideNavBar">
       <ul id="nav-mobile" class="side-nav fixed">
@@ -72,6 +72,7 @@ mysqli_select_db($link,"wushuclub");
     </div>
   </header>
   <main>
+
 <!-- Division Side Nav -->
       <ul id="slide-out" class="side-nav">  
       <li class="logo">
@@ -87,25 +88,38 @@ mysqli_select_db($link,"wushuclub");
         </ul>
       </li>
     </ul>
+
+<!-- Main Container -->
     <div class="container">
       <br>
-
 <?php
       $retrieveCompetitor = "SELECT id, firstName, lastName, gender, birthDate, level FROM competitors WHERE id=".$_SESSION['competitorId'];
       $result = mysqli_query($link, $retrieveCompetitor);
       $row = mysqli_fetch_assoc($result);
       if (mysqli_num_rows($result) > 0)
       {
-        echo "<h1 class='header' id='competitorName'>".$row['firstName']." ".$row['lastName']."</h1>";
+        echo "<h1 class='displayName' id='competitorName'>".$row['firstName']." ".$row['lastName']."</h1>";
       }
       else
       {
-        echo '<h1 class="header" id="competitorName">Competitor Name</h1>';
+        echo '<h1 class="displayName" id="competitorName">Competitor Name</h1>';
       }
-?> 
 
+      // $retrieveScore = "SELECT scoreTotal FROM eventScoring WHERE competitorId=".$_SESSION['competitorId']."AND eventId=".$_SESSION['eventId'];
+      // $result = mysqli_query($link, $retrieveScore);
+      // $row = mysqli_fetch_assoc($result);
+      // if (mysqli_num_rows($result) > 0)
+      // {
+      //   echo '<h1 class="score" id="score">'.$row['scoreTotal'].'</h1>';
+      // }
+      // else
+      // {
+      //   echo $_SESSION['competitorId'].' '.$_SESSION['eventId'];
+      // }
+?> 
     </div>
   </main>
+
   <!--  Scripts-->
   <script src="js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-include_once 'navListFunctions.php';
+include_once 'scoringFunctions.php';
 
 getSideNavDivisions();
 ?>

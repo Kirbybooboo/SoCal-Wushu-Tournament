@@ -10,6 +10,7 @@ $_SESSION['judgeId'] = $_GET['judgeId'];
       <label for="score">Score</label>
     </div>
   </div>
+  <div class="chips chips-placeholder"></div>
   <div class="row">
     <div class="input-field col s8">
       <textarea id="notes1" class="materialize-textarea"></textarea>
@@ -27,5 +28,9 @@ $_SESSION['judgeId'] = $_GET['judgeId'];
 <script>
 $(document).ready(function(){
 $('.tooltipped').tooltip({delay: 50});
+$('.chips-placeholder').material_chip({
+    placeholder: 'Enter deduction code',
+    secondaryPlaceholder: '+Deduction Code',
+  });
 }); 
 </script>

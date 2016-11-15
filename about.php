@@ -114,6 +114,8 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Venue</h2>
                     <p class="lead">The SoCal Wushu Tournament will be held at the Bren Event Center near the UCI campus.</p>
+                    <b>
+                    <p class="lead">Address: 100 Mesa Rd, Irvine, CA 92697</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="img/breneventcenter.jpg" alt="">

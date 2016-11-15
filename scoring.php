@@ -2,9 +2,7 @@
 // Start the session
 session_start();
 
-include_once 'divisionFunctions.php';
-include_once 'processForm.php';
-include_once 'navListFunctions.php';
+include_once 'scoringFunctions.php';
 $_SESSION = array();
 $user = 'wushuclub';
 $password = 'f4FreePhe';
@@ -33,6 +31,7 @@ mysqli_select_db($link,"wushuclub");
     $_SESSION['judgeId'] = 1;
   }
 ?>
+
 <!-- Top Navigation Bar -->
     <nav class="indigo" role="navigation" style="height: 144px">
       <div class="nav-wrapper container">
@@ -51,6 +50,7 @@ mysqli_select_db($link,"wushuclub");
           }
         }
       ?>
+
 <!-- Judge Dropdown -->
         <ul class="right hide-on-med-and-down">
           <ul id="judgeDropdown" class="dropdown-content">
@@ -65,6 +65,7 @@ mysqli_select_db($link,"wushuclub");
           </ul>
           <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 16px;margin-top: 24px;">Judge 1<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
+
 <!-- Competitor Dropdown -->
         <ul class="right hide-on-med-and-down">
           <ul id="competitorDropdown" class="dropdown-content">
@@ -74,6 +75,7 @@ mysqli_select_db($link,"wushuclub");
         </ul>
       </div>
     </nav>
+
 <!-- Events Side Nav-->
     <div class="sideNavBar">
       <ul id="nav-mobile" class="side-nav fixed">
@@ -93,6 +95,7 @@ mysqli_select_db($link,"wushuclub");
     </div>
   </header>
   <main>
+
 <!-- Division Side Nav -->
       <ul id="slide-out" class="side-nav">  
       <li class="logo">
@@ -110,7 +113,6 @@ mysqli_select_db($link,"wushuclub");
     </ul>
     <div class="container">
       <br>
-
 <?php
       $retrieveCompetitor = "SELECT id, firstName, lastName, gender, birthDate, level FROM competitors WHERE id=".$_SESSION['competitorId'];
       $result = mysqli_query($link, $retrieveCompetitor);
@@ -124,6 +126,7 @@ mysqli_select_db($link,"wushuclub");
         echo '<h1 class="header" id="competitorName">Competitor Name</h1>';
       }
 ?>
+
 <!-- Competitor Score Form -->
       <div class="row">
         <form class="col s12" action='' method="POST" id="scoreForm">
@@ -148,7 +151,6 @@ mysqli_select_db($link,"wushuclub");
           </div>
         </form>
       </div>
-
       <div class="container">
         <div id="submitSuccess" class="modal">
           <div class="modal-content">
@@ -159,9 +161,9 @@ mysqli_select_db($link,"wushuclub");
           </div>
         </div>
       </div>   
-
     </div>
   </main>
+
   <!--  Scripts-->
   <script src="js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
