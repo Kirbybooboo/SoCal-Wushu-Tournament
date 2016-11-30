@@ -8,7 +8,6 @@ $user = 'wushuclub';
 $password = 'f4FreePhe';
 $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
-
 ?>
 
 <!DOCTYPE html>
