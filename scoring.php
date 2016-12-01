@@ -3,10 +3,12 @@
 session_start();
 
 include_once 'scoringFunctions.php';
+$_SESSION = array();
 $user = 'wushuclub';
 $password = 'f4FreePhe';
 $link = mysqli_connect("localhost",$user,$password)  or die ("failed to connect to server !!");
 mysqli_select_db($link,"wushuclub");
+
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +25,12 @@ mysqli_select_db($link,"wushuclub");
 </head>
 <body>
   <header>
+<?php 
+  if (!$_SESSION['judgeId'])
+  {
+    $_SESSION['judgeId'] = 1;
+  }
+?>
 
 <!-- Top Navigation Bar -->
     <nav class="indigo" role="navigation" style="height: 144px">
@@ -42,6 +50,21 @@ mysqli_select_db($link,"wushuclub");
           }
         }
       ?>
+
+<!-- Judge Dropdown -->
+        <ul class="right hide-on-med-and-down">
+          <ul id="judgeDropdown" class="dropdown-content">
+<?php
+            for ($i = 1; $i <= 5; $i++)
+            {
+              echo '<li><a href="#!" onclick="setJudge('.$i.');setJudgeDropdownTitle('.$i.');">Judge '.$i.'</a></li>';
+            }
+?>
+            <li class="divider"></li>
+            <li><a href="#!" onclick="setHeadJudge();setJudgeDropdownTitle(6);">Head Judge</a></li>
+          </ul>
+          <li><a class="dropdown-button" id="judgeDropdownTitle" href="#!" data-activates="judgeDropdown" style="font-size: 16px;margin-top: 24px;">Judge 1<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
 
 <!-- Competitor Dropdown -->
         <ul class="right hide-on-med-and-down">
@@ -88,8 +111,6 @@ mysqli_select_db($link,"wushuclub");
         </ul>
       </li>
     </ul>
-
-<!-- Main Container -->
     <div class="container">
       <br>
 <?php
@@ -98,25 +119,48 @@ mysqli_select_db($link,"wushuclub");
       $row = mysqli_fetch_assoc($result);
       if (mysqli_num_rows($result) > 0)
       {
-        echo "<h1 class='displayName' id='competitorName'>".$row['firstName']." ".$row['lastName']."</h1>";
+        echo "<h1 class='header' id='competitorName'>".$row['firstName']." ".$row['lastName']."</h1>";
       }
       else
       {
-        echo '<h1 class="displayName" id="competitorName">Competitor Name</h1>';
+        echo '<h1 class="header" id="competitorName">Competitor Name</h1>';
       }
+?>
 
-      // $retrieveScore = "SELECT scoreTotal FROM eventScoring WHERE competitorId=".$_SESSION['competitorId']."AND eventId=".$_SESSION['eventId'];
-      // $result = mysqli_query($link, $retrieveScore);
-      // $row = mysqli_fetch_assoc($result);
-      // if (mysqli_num_rows($result) > 0)
-      // {
-      //   echo '<h1 class="score" id="score">'.$row['scoreTotal'].'</h1>';
-      // }
-      // else
-      // {
-      //   echo $_SESSION['competitorId'].' '.$_SESSION['eventId'];
-      // }
-?> 
+<!-- Competitor Score Form -->
+      <div class="row">
+        <form class="col s12" action='' method="POST" id="scoreForm">
+          <div class="row">
+            <div class="input-field col s2">
+              <input id="score" name="score" type="text">
+              <label for="score">Score</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s8">
+              <textarea id="notes1" class="materialize-textarea"></textarea>
+              <label for="notes1">Notes on competitor</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s8">
+              <button class="btn waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Submit score to Head Judge" type="submit" name="submit" id="submit" onclick="submitScore()">Submit
+              <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="container">
+        <div id="submitSuccess" class="modal">
+          <div class="modal-content">
+            <h4>Score Submitted</h4>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+      </div>   
     </div>
   </main>
 

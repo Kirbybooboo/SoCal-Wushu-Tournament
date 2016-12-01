@@ -1,5 +1,5 @@
 <?php
-include_once 'scoringFunctions.php';
+include_once 'processForm.php';
 
 $type = $_GET['type'];
 $err = 0;

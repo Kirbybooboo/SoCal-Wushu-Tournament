@@ -112,7 +112,7 @@ if(isset($_REQUEST['submit'])) {
 
 
         //go to redirect after successful registration
-        header('Location: views/redirect.php');
+        header('Location: redirect.php');
     }
 }
 ?>
@@ -165,13 +165,13 @@ if(isset($_REQUEST['submit'])) {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="views/index.html">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="views/index.html#news">News</a>
+                        <a href="index.html#news">News</a>
                     </li>
                     <li>
-                        <a href="views/about.php#about">About</a>
+                        <a href="about.php#about">About</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -439,11 +439,11 @@ if(isset($_REQUEST['submit'])) {
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="views/index.html">Home</a>
+                            <a href="index.html">Home</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="views/index.html#news">News</a>
+                            <a href="index.html#news">News</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
